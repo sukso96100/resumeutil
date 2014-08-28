@@ -1,0 +1,184 @@
+<!--
+  Self Introduction Practice Form Tool for university Enterance
+  Copyright (C) 2014 Youngbin Han<sukso96100@gmail.com>
+
+  This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+-->
+
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="css/bootstrap.css">
+        <style>
+        .wrap{
+        width: 100%;
+        max-width: 100%;}
+        </style>
+        <title>대입 자기소개서 작성 연습도구</title>
+    </head>
+    
+    <body>
+        <div class="container">
+     <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">자기소개서 연습툴</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">메뉴 <span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
+            <li onclick="printContent()"><a href="#">인쇄</a></li>
+            <li data-toggle="modal" data-target="#HelpModal"><a href="#">도움말</a></li>
+            <li data-toggle="modal" data-target="#DevinfoModal"><a href="#">개발자 정보</a></li>
+            <li><a href="https://github.com/sukso96100/univ-self-intro-form/tree/gh-pages">소스코드 얻기</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+    </div>
+
+        <br><br><br><br>
+    
+
+      <div class="jumbotron">
+  <h1>대학 입시 자기소개서 작성 연습 해보기.</h1>
+          <p>이 웹사이트를 이용하여, 자기소개서 작성을 연습해 보세요.<br> 
+              웹사이트에서 글자수를 자동으로 세어주어 좀더 편리한 작성 연습이 가능합니다.<br>
+              인쇄가 필요한 경우, 우측 상단 "메뉴 》 인쇄" 를 사용하면 양식 부분만 인쇄 가능합니다.<br>
+              <a href="https://github.com/sukso96100/univ-self-intro-form/tree/gh-pages">
+              	이 웹사이트는 오픈소스 이며, 여기를 클릭하여 누구든지 웹사이트 개발 및 개선에 참여하실 수 있습니다.
+              </a><br>
+          ©한영빈(sukso96100@gmail.com)<br>
+<!--              Google Plus +1 Button-->
+          <div class="g-plusone" data-annotation="inline" data-width="300" data-href="http://sukso96100.github.io/univ-self-intro-form/"></div><br>
+          <!--        Faceboot Like Button-->
+        <div class="fb-like" data-href="http://sukso96100.github.io/univ-self-intro-form/" data-layout="standard" data-action="like" data-show-faces="true" data-share="false"></div>
+          </p><br>      
+</div><br><br>
+        
+<!--        Modals-->
+<!--       Help Modal-->
+<div class="modal fade" id="HelpModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title" id="myModalLabel">도움말</h4>
+      </div>
+      <div class="modal-body">
+          <h5>간단한 도움말.</h5>
+          <ul>
+            <li>이 웹사이트를 이용하시면, 자개소개서 작성 연습을 좀 더 편리하게 하실 수 있습니다.</li>
+            <li>각 문항마다 내용 입력하셔서 작성 연습을 하시면서, 공백 포함 글자수와 공백 비 포함 글자수를 확인 해 보실 수 있습니다.</li>
+            <li>작성하신 양식을 인쇄해 보실 수도 있습니다. 우측 상단 메뉴에서 "인쇄" 를 누르면, 양식 부분만 인쇄가 됩니다.</li>
+            <li>현재 이 웹사이트는 자기소개서 공통 문항만 지원합니다.</li>
+          </ul>
+      </div>
+      <div class="modal-footer">
+      </div>
+    </div>
+  </div>
+</div>
+        
+<!--        Developer Info Modal-->
+        <!-- Modal -->
+<div class="modal fade" id="DevinfoModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title" id="myModalLabel">개발자 정보</h4>
+          ©한영빈<br>
+          <ul>
+            <li><a href="http://sukso96100.github.io">개발자 블로그</a></li>
+            <li><a href="http://github.com/sukso96100">GitHub 프로필</a></li>
+            <li><a href="http://facebook.com/habyoungbin">Facebook 프로필</a></li>
+            <li><a href="http://google.com/+한영빈96">Google Plus 프로필</a></li>
+          </ul>
+      </div>
+      <div class="modal-body">
+        <h4></h4>
+      </div>
+      <div class="modal-footer">
+      </div>
+    </div>
+  </div>
+</div>
+        
+<!--        Contents-->
+        <div id="printArea">
+        <div class="well">
+            <h2>2015학년도 학생부 전형 자기소개서 공통양식</h2>
+        </div>
+        <div class="well">
+        <h3>1. 고등학교 재학기간 중 학업에 기울인 노력과 학습 경험에 대해, 배우고 느낀 점을 중심으로 기술해 주시기 바랍니다(1,000자 이내).</h3>
+            공백 포함 <input  readonly type="text" id='q1length' name="q1length" size="3" maxlength="5" value="0"> 자 입력 됨./
+            공백 비 포함 <input  readonly type="text" id='q1count' name="q1count" size="3" maxlength="5" value="0"> 자 입력 됨.
+            <textarea class="wrap" rows="25" id="q1" onKeyUp="textCounter(this,'q1length','q1count')"></textarea >
+            </div><br>
+        
+         <div class="well">
+        <h3>2. 고등학교 재학기간 중 본인이 의미를 두고 노력했던 교내 활동을 배우고 느낀점을 중심으로 3개 이내로 기술해 주시기 바랍니다. 단, 교외 활동 중 학교장의 허락을 받고 참여한 활동은 포함됩니다(1,500자 이내).</h3>
+             공백 포함 <input  readonly type="text" id='q2length' name="q2length" size="3" maxlength="5" value="0"> 자 입력 됨./
+             공백 비 포함 <input  readonly type="text" id='q2count' name="q2count" size="3" maxlength="5" value="0"> 자 입력 됨.
+             <textarea class="wrap" rows="30" id="q2" onKeyUp="textCounter(this,'q2length','q2count')"></textarea >
+            </div><br>
+        
+        <div class="well">
+        <h3>3. 학교 생활 중 배려, 나눔, 협력, 갈등 관리 등을 실천한 사례를 들고, 그 과정을 통해 배우고 느낀 점을 기술해 주시기 바랍니다(1,000자 이내).</h3>
+            공백 포함 <input  readonly type="text" id='q3length' name="q3length" size="3" maxlength="5" value="0"> 자 입력 됨./
+            공백 비 포함 <input  readonly type="text" id='q3count' name="q2count" size="3" maxlength="5" value="0"> 자 입력 됨.
+            <textarea class="wrap" rows="25" id="q3" onKeyUp="textCounter(this,'q3length','q3count')"></textarea >
+            </div><br>
+
+    </div>
+    </div>
+        <!-- 이 태그를 head 태그에 배치하거나 닫는 body 태그 바로 앞에 배치하세요. -->
+<script src="https://apis.google.com/js/platform.js" async defer>
+  {lang: 'ko'}
+</script>
+    
+<!--    Facebook Javascript SDK-->
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/ko_KR/sdk.js#xfbml=1&version=v2.0";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+        <script src="js/jquery-2.1.1.min.js"></script>
+        <script src="js/bootstrap.js"></script>
+        <script src="js/formtool.js"></script>
+    </body>
+</html>
