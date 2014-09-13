@@ -29,7 +29,7 @@
         width: 100%;
         max-width: 100%;}
         </style>
-        <title>대입 자기소개서 작성 연습도구</title>
+        <title>IntroWorkout</title>
     </head>
     
     <body>
@@ -44,7 +44,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">자기소개서 연습툴</a>
+      <a class="navbar-brand" href="#">IntroWorkout</a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -59,6 +59,7 @@
             <li data-toggle="modal" data-target="#HelpModal"><a href="#">도움말</a></li>
             <li data-toggle="modal" data-target="#DevinfoModal"><a href="#">개발자 정보</a></li>
             <li><a href="https://github.com/sukso96100/univ-self-intro-form/tree/gh-pages">소스코드 얻기</a></li>
+              <li onclick="parseBackEndTest()"><a href="#">Test Parse BackEnd</a></li>
           </ul>
         </li>
       </ul>
@@ -178,7 +179,21 @@
 }(document, 'script', 'facebook-jssdk'));</script>
 
         <script src="js/jquery-2.1.1.min.js"></script>
+<!--    Parse Javascript SDK-->
+    <script src="http://www.parsecdn.com/js/parse-1.3.0.min.js"></script>
+    
         <script src="js/bootstrap.js"></script>
         <script src="js/formtool.js"></script>
+    <script>
+    Parse.initialize("VfbdwjDu0SrnwEo1P4kdgZAKAlUhzdFUjV05fRKk", "3LDL1LlOf5BHtnQGkosGltIluvVxYWxhbUTdeBqQ");
+        
+        function parseBackEndTest(){
+            var TestObject = Parse.Object.extend("TestObject");
+var testObject = new TestObject();
+testObject.save({foo: "bar"}).then(function(object) {
+  alert("yay! it worked");
+});
+        }
+    </script>
     </body>
 </html>
