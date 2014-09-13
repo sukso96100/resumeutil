@@ -55,6 +55,7 @@
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">메뉴 <span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
+              <li data-toggle="modal" data-target="#LogInModal"><a>사용자 계정</a></li>
             <li onclick="printContent()"><a href="#">인쇄</a></li>
             <li data-toggle="modal" data-target="#HelpModal"><a href="#">도움말</a></li>
             <li data-toggle="modal" data-target="#DevinfoModal"><a href="#">개발자 정보</a></li>
@@ -135,6 +136,80 @@
   </div>
 </div>
         
+        <!--      User Account Log In Modal-->
+<div class="modal fade" id="LogInModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title" id="myModalLabel">사용자 계정</h4>
+      </div>
+      <div class="modal-body">
+          
+<!--          로그인 그룹-->
+          <div class="well">
+          <h5>IntroWorkout 사용자 로그인</h5>
+          <div class="input-group">
+  <span class="input-group-addon">
+              <span class="glyphicon glyphicon-user"></span>
+              </span>
+  <input id="username" type="text" class="form-control" placeholder="사용자 계정이름(ID) 입력">
+</div>
+              <div class="input-group">
+  <span class="input-group-addon">
+                  <span class="glyphicon glyphicon-lock"></span>
+                  </span>
+  <input id="password" type="password" class="form-control" placeholder="비밀번호 입력">
+</div><br>
+               <button type="button" class="btn btn-default">로그인</button>
+          </div>
+          
+<!--          비밀번호 찿기 그룹-->
+          <div class="well">
+              <h5>비밀번호 찿기</h5>
+              
+               <div class="input-group">
+  <span class="input-group-addon">
+              <span class="glyphicon glyphicon-envelope"></span>
+              </span>
+  <input id="passwordreset" type="text" class="form-control" placeholder="가입시 입력한 이메일 주소 입력">
+</div><br>
+               <button onclick="resetPasswordTask()" type="button" class="btn btn-default">비밀번호 찿기</button>
+              </div>
+          
+          <!--          회원 가입 그룹-->
+          <div class="well">
+              <h5>IntroWorkout 가입하기</h5>
+              
+                       <div class="input-group">
+  <span class="input-group-addon">
+              <span class="glyphicon glyphicon-user"></span>
+              </span>
+  <input id="newusername" type="text" class="form-control" placeholder="사용할 사용자 계정이름(ID) 입력">
+</div>
+              <div class="input-group">
+  <span class="input-group-addon">
+                  <span class="glyphicon glyphicon-lock"></span>
+                  </span>
+  <input id="newpassword" type="password" class="form-control" placeholder="사용할 비밀번호 입력">
+</div>
+               <div class="input-group">
+  <span class="input-group-addon">
+              <span class="glyphicon glyphicon-envelope"></span>
+              </span>
+  <input id="newemail" type="text" class="form-control" placeholder="이메일 주소 입력">
+</div><br>
+               <button onclick="newUserTask()" type="button" class="btn btn-default">신규 회원가입</button>
+              </div>
+          
+          
+      </div>
+      <div class="modal-footer">
+      </div>
+    </div>
+  </div>
+</div>
+        
 <!--        Contents-->
         <div id="printArea">
         <div class="well">
@@ -185,6 +260,7 @@
         <script src="js/bootstrap.js"></script>
         <script src="js/formtool.js"></script>
     <script>
+        //Parse 초기화
     Parse.initialize("VfbdwjDu0SrnwEo1P4kdgZAKAlUhzdFUjV05fRKk", "3LDL1LlOf5BHtnQGkosGltIluvVxYWxhbUTdeBqQ");
         
         function parseBackEndTest(){
@@ -192,6 +268,59 @@
 var testObject = new TestObject();
 testObject.save({foo: "bar"}).then(function(object) {
   alert("yay! it worked");
+});
+        }
+        
+        function newUserTask(){
+            var newusername = document.getElementById('newusername').value;
+            var newpassword = document.getElementById('newpassword').value;
+            var newemail = document.getElementById('newemail').value;
+            
+        var user = new Parse.User();
+user.set("username", newusername);
+user.set("password", newpassword);
+user.set("email", newemail);
+//user.set("emailVerified", false);
+ 
+user.signUp(null, {
+  success: function(user) {
+    // Hooray! Let them use the app now.
+     alert("가입해 주셔서 감사합니다! 서비스 이용을 위해 이메일 인증이 필요합니다.\n가입시 입력하신 이메일의 받은편지함에서 인증 메일을 확인하셔서 이메일 인증을 진행하세요.");
+  },
+  error: function(user, error) {
+    // Show the error message somewhere and let the user try again.
+    alert("Error: " + error.code + " " + error.message);
+  }
+});
+        }
+        
+        function resetPasswordTask(){
+         var passwordreset = document.getElementById('passwordreset').value;
+            
+            Parse.User.requestPasswordReset(passwordreset, {
+  success: function() {
+    // Password reset request was sent successfully
+      alert("비밀번호 찿기 이메일이 전송되었습니다. 확인하세요.");
+  },
+  error: function(error) {
+    // Show the error message somewhere
+    alert("Error: " + error.code + " " + error.message);
+  }
+});
+        }
+        
+        function loginTask(){
+            var username = document.getElementById('username').value;
+             var password = document.getElementById('password').value;
+            
+            
+            Parse.User.logIn(username, password, {
+  success: function(user) {
+    // Do stuff after successful login.
+  },
+  error: function(user, error) {
+    // The login failed. Check error to see why.
+  }
 });
         }
     </script>

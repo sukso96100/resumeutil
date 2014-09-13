@@ -1,3 +1,4 @@
+//글자수 카운터
 function textCounter(field,withspace,withoutspace) {         
 	var cntfield = document.getElementById(withspace) //With Spaces
     var cnt2field = document.getElementById(withoutspace)
@@ -5,6 +6,7 @@ function textCounter(field,withspace,withoutspace) {
         cnt2field.value = field.value.replace(/\s/g,"").length; //Without Spaces
 }
         
+//인쇄 함수
     function printContent(){
 //    document.body.innerHTML = printArea.innerHTML;
 //			window.print();
