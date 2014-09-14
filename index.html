@@ -19,6 +19,8 @@
 
 <!DOCTYPE html>
 <html>
+    
+<!--    HEAD-->
     <head>
         <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -29,10 +31,36 @@
         width: 100%;
         max-width: 100%;}
         </style>
-        <title>대입 자기소개서 작성 연습도구</title>
+        <title>IntroWorkout</title>
+        
+<!--    Load Javascripts...-->
+        
+          <!-- 이 태그를 head 태그에 배치하거나 닫는 body 태그 바로 앞에 배치하세요. -->
+<script src="https://apis.google.com/js/platform.js" async defer>
+  {lang: 'ko'}
+</script>
+    
+<!--    Facebook Javascript SDK-->
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/ko_KR/sdk.js#xfbml=1&version=v2.0";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+        <script src="js/jquery-2.1.1.min.js"></script>
+<!--    Parse Javascript SDK-->
+    <script src="http://www.parsecdn.com/js/parse-1.3.0.min.js"></script>
+    
+        <script src="js/bootstrap.js"></script>
+        <script src="js/formtool.js"></script>
+    <script src="js/backend.js"></script>
     </head>
     
-    <body>
+<!--    BODY-->
+    <body onload="loadFormData()">
         <div class="container">
      <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
       <div class="container-fluid">
@@ -44,7 +72,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">자기소개서 연습툴</a>
+      <a class="navbar-brand" href="#">IntroWorkout</a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -52,9 +80,12 @@
       <ul class="nav navbar-nav">
       </ul>
       <ul class="nav navbar-nav navbar-right">
+          <li><a id="statemsg"></a></li>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">메뉴 <span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
+              <li onclick="saveFormData()"><a>양식 저장</a></li>
+              <li onclick="openUserModal()"><a>사용자 계정</a></li>
             <li onclick="printContent()"><a href="#">인쇄</a></li>
             <li data-toggle="modal" data-target="#HelpModal"><a href="#">도움말</a></li>
             <li data-toggle="modal" data-target="#DevinfoModal"><a href="#">개발자 정보</a></li>
@@ -100,6 +131,7 @@
             <li>이 웹사이트를 이용하시면, 자개소개서 작성 연습을 좀 더 편리하게 하실 수 있습니다.</li>
             <li>각 문항마다 내용 입력하셔서 작성 연습을 하시면서, 공백 포함 글자수와 공백 비 포함 글자수를 확인 해 보실 수 있습니다.</li>
             <li>작성하신 양식을 인쇄해 보실 수도 있습니다. 우측 상단 메뉴에서 "인쇄" 를 누르면, 양식 부분만 인쇄가 됩니다.</li>
+            <li>작성중인 양식을 저장하려면, 우측 상단 메뉴에서 "인쇄" 를 누르세요(로그인이 필요합니다.)</li>
             <li>현재 이 웹사이트는 자기소개서 공통 문항만 지원합니다.</li>
           </ul>
       </div>
@@ -134,7 +166,122 @@
   </div>
 </div>
         
-<!--        Contents-->
+        <!--      User Account Log In Modal-->
+<div class="modal fade" id="LogInModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h3 class="modal-title" id="myModalLabel">사용자 계정</h3>
+      </div>
+      <div class="modal-body">
+          <section id="userarea">
+          <h4>로그인 하시면, 작성중인 양식을 저장 가능합니다.</h4>
+<!--          로그인 그룹-->
+          <div class="well">
+          <h5>IntroWorkout 사용자 로그인</h5>
+          <div class="input-group">
+  <span class="input-group-addon">
+              <span class="glyphicon glyphicon-user"></span>
+              </span>
+  <input id="username" type="text" class="form-control" placeholder="사용자 계정이름(ID) 입력">
+</div>
+              <div class="input-group">
+  <span class="input-group-addon">
+                  <span class="glyphicon glyphicon-lock"></span>
+                  </span>
+  <input id="password" type="password" class="form-control" placeholder="비밀번호 입력">
+</div><br>
+              <section id="LogInResult"></section><br>
+               <button onclick="loginTask()" type="button" class="btn btn-default">로그인</button>
+          </div>
+          
+<!--          비밀번호 찿기 그룹-->
+          <div class="well">
+              <h5>비밀번호 찿기</h5>
+              
+               <div class="input-group">
+  <span class="input-group-addon">
+              <span class="glyphicon glyphicon-envelope"></span>
+              </span>
+  <input id="passwordreset" type="text" class="form-control" placeholder="가입시 입력한 이메일 주소 입력">
+</div><br>
+              <section id="PasswordResetResult"></section><br>
+               <button onclick="resetPasswordTask()" type="button" class="btn btn-default">비밀번호 찿기</button>
+              </div>
+          
+          <!--          회원 가입 그룹-->
+          <div class="well">
+              <h5>IntroWorkout 가입하기</h5>
+              
+                       <div class="input-group">
+  <span class="input-group-addon">
+              <span class="glyphicon glyphicon-user"></span>
+              </span>
+  <input id="newusername" type="text" class="form-control" placeholder="사용할 사용자 계정이름(ID) 입력">
+</div>
+              <div class="input-group">
+  <span class="input-group-addon">
+                  <span class="glyphicon glyphicon-lock"></span>
+                  </span>
+  <input id="newpassword" type="password" class="form-control" placeholder="사용할 비밀번호 입력">
+</div>
+               <div class="input-group">
+  <span class="input-group-addon">
+              <span class="glyphicon glyphicon-envelope"></span>
+              </span>
+  <input id="newemail" type="text" class="form-control" placeholder="이메일 주소 입력">
+</div><br>
+              <section id="SignUpResult"></section><br>
+               <button onclick="newUserTask()" type="button" class="btn btn-default">신규 회원가입</button>
+              </div>
+          
+          </section>
+      </div>
+      <div class="modal-footer">
+      </div>
+    </div>
+  </div>
+</div>
+        
+        
+<!--        User Info Modal-->
+<div class="modal fade" id="UserInfoModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h3 class="modal-title" id="myModalLabel">사용자 계정</h3>
+      </div>
+      <div class="modal-body">
+         <div class="well">
+            <h4 id="CurrentUserName">User Name</h4>
+             <p id="CurrentUserEmail">User Email</p><br>
+                            <button onclick="logoutTask()" type="button" class="btn btn-default">로그아웃</button>
+
+          </div>
+          <div class="well">
+              <h4>비밀번호 변경</h4>
+            <div class="input-group">
+  <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
+                <input id="newpass" type="password" class="form-control" placeholder="새로 사용할 비밀번호 입력"> 
+          </div>
+               <div class="input-group">
+  <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
+  <input id="newpasscheck" type="password" class="form-control" placeholder="비밀번호 확인">
+</div><br>
+              <section id="ChangePasswordResult"></section><br>
+              <button onclick="changePasswordTask()" type="button" class="btn btn-default">비밀번호 변경하기</button>
+      </div>
+      <div class="modal-footer">
+          
+      </div>
+    </div>
+  </div>
+</div>
+    </div>
+        
+        <!--        Contents-->
         <div id="printArea">
         <div class="well">
             <h2>2015학년도 학생부 전형 자기소개서 공통양식</h2>
@@ -162,23 +309,6 @@
 
     </div>
     </div>
-        <!-- 이 태그를 head 태그에 배치하거나 닫는 body 태그 바로 앞에 배치하세요. -->
-<script src="https://apis.google.com/js/platform.js" async defer>
-  {lang: 'ko'}
-</script>
-    
-<!--    Facebook Javascript SDK-->
-<div id="fb-root"></div>
-<script>(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/ko_KR/sdk.js#xfbml=1&version=v2.0";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
-
-        <script src="js/jquery-2.1.1.min.js"></script>
-        <script src="js/bootstrap.js"></script>
-        <script src="js/formtool.js"></script>
+      
     </body>
 </html>
