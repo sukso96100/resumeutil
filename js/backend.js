@@ -123,6 +123,8 @@
             var q1data = document.getElementById('q1').value;
             var q2data = document.getElementById('q2').value;
             var q3data = document.getElementById('q3').value;
+            var q4data = document.getElementById('q4').value;
+            var q4qinputdata = document.getElementById('q4qinput').value;
             
             
             //Find Existing Data First
@@ -140,6 +142,8 @@
                     userIntroData.set("q1",q1data);
                     userIntroData.set("q2",q2data);
                     userIntroData.set("q3",q3data);
+                    userIntroData.set("q4",q4data);
+                    userIntroData.set("q4qinput",q4qinputdata);
                     
                     userIntroData.save(null, {
                         success: function(userIntroData) {  
@@ -153,6 +157,8 @@
                         object.set("q1",q1data);
                         object.set("q2",q2data);
                         object.set("q3",q3data);
+                        object.set("q4",q4data);
+                        object.set("q4qinput",q4qinputdata);
                         object.save(null, {
                         success: function(userIntroData) {  
                             document.getElementById('statemsg').innerHTML = "저장 완료";
@@ -171,6 +177,8 @@
                     userIntroData.set("q1",q1data);
                     userIntroData.set("q2",q2data);
                     userIntroData.set("q3",q3data);
+                    userIntroData.set("q4",q4data);
+                    userIntroData.set("q4qinput",q4qinutdata);
                     
                     userIntroData.save(null, {
                         success: function(userIntroData) {  
@@ -199,6 +207,8 @@
                     document.getElementById('q1').value = results.get("q1");
                     document.getElementById('q2').value = results.get("q2");
                     document.getElementById('q3').value = results.get("q3");
+                    document.getElementById('q4').value = results.get("q4");
+                    document.getElementById('q4qinput').value = results.get("q4qinput");
                     document.getElementById('statemsg').innerHTML = "불러오기 완료";
                 },
                 error: function(error) {
