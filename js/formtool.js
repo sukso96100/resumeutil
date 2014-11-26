@@ -14,6 +14,8 @@ function textCounter(field,withspace,withoutspace) {
     var q1 = document.getElementById('q1');
     var q2 = document.getElementById('q2');
     var q3 = document.getElementById('q3');
+    var q4q = document.getElementById('q4qinput');
+    var q4 = document.getElementById('q4');
     
     var strFeature = "";
 			strFeature += "width=800, height=800, all=no";
@@ -51,6 +53,16 @@ function textCounter(field,withspace,withoutspace) {
             objWin.document.write("<br>");
             objWin.document.write("</p>");
             objWin.document.write(q3.value);
+            objWin.document.write("</p>");
+            objWin.document.write("<br>");
+            objWin.document.write("<br>");
+        
+         objWin.document.write("<h3>");
+            objWin.document.write(q4q.value);
+ 	    objWin.document.write("</h3>");
+            objWin.document.write("<br>");
+            objWin.document.write("</p>");
+            objWin.document.write(q4.value);
             objWin.document.write("</p>");
             objWin.document.write("<br>");
             objWin.document.write("<br>");
