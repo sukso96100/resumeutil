@@ -30,6 +30,7 @@
         .wrap{
         width: 100%;
         max-width: 100%;}
+            select, option { width: 100%; }
         </style>
         <title>IntroWorkout</title>
         
@@ -57,10 +58,12 @@
         <script src="js/bootstrap.js"></script>
         <script src="js/formtool.js"></script>
     <script src="js/backend.js"></script>
+        <script src="js/jsonloader.js"></script>
+        <script src="js/index.js"></script>
     </head>
     
 <!--    BODY-->
-    <body onload="loadFormData()">
+    <body onload="initpage()">
         <div class="container">
      <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
       <div class="container-fluid">
@@ -105,7 +108,7 @@
           <p>IntroWork 서비스를 이용하여,대학 입시 자기소개서 작성을 연습해 보세요.<br> 
               웹사이트에서 글자수를 자동으로 세어주어 좀더 편리한 작성 연습이 가능합니다.<br>
               인쇄가 필요한 경우, 우측 상단 "메뉴 》 인쇄" 를 사용하면 양식 부분만 인쇄 가능합니다.<br>
-              "메뉴 》 양식 저장" 으로 저장도 가능합니다(저장 기능은 로그인이 필요합니다.)<br>
+              "메뉴 》 인쇄" 으로 저장도 가능합니다(저장 기능은 로그인이 필요합니다.)<br>
               <a href="https://github.com/sukso96100/univ-self-intro-form/tree/gh-pages">
               	이 웹사이트는 오픈소스 이며, 여기를 클릭하여 누구든지 웹사이트 개발 및 개선에 참여하실 수 있습니다.
               </a><br>
@@ -304,8 +307,20 @@
         <div class="well">
         <h3>3. 학교 생활 중 배려, 나눔, 협력, 갈등 관리 등을 실천한 사례를 들고, 그 과정을 통해 배우고 느낀 점을 기술해 주시기 바랍니다(1,000자 이내).</h3>
             공백 포함 <input  readonly type="text" id='q3length' name="q3length" size="3" maxlength="5" value="0"> 자 입력 됨./
-            공백 비 포함 <input  readonly type="text" id='q3count' name="q2count" size="3" maxlength="5" value="0"> 자 입력 됨.
+            공백 비 포함 <input  readonly type="text" id='q3count' name="q3count" size="3" maxlength="5" value="0"> 자 입력 됨.
             <textarea class="wrap" rows="25" id="q3" onKeyUp="textCounter(this,'q3length','q3count')"></textarea >
+            </div><br>
+            
+            <div class="well">
+        <h4>(4번 질문은 대학교별로 다릅니다, 원하시는 대학교의 질문을 선택하신 후, 답하세요.)</h4>
+                <select id="q4select" onchange="setQ4()" onclick="setQ4()" onfocus="setQ4()"></select><br><br>
+                <h4>(대답할 질문)</h4>
+                <div class="form-group">
+  <input id="q4qinput" width="100%" type="text" class="form-control" placeholder="대답할 질문을 여기에 입력하거나, 위에서 선택하세요.">
+</div> <br>
+            공백 포함 <input  readonly type="text" id='q4length' name="q4length" size="3" maxlength="5" value="0"> 자 입력 됨./
+            공백 비 포함 <input  readonly type="text" id='q4count' name="q4count" size="3" maxlength="5" value="0"> 자 입력 됨.
+            <textarea class="wrap" rows="25" id="q4" onKeyUp="textCounter(this,'q4length','q4count')"></textarea >
             </div><br>
 
     </div>

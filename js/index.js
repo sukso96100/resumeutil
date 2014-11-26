@@ -1,0 +1,4 @@
+function initpage(){
+    loadJson()
+    loadFormData()
+}
