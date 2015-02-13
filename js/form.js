@@ -186,7 +186,7 @@ function textCounter(field,withspace) {
 
 			var objWin = window.open('', 'print', strFeature);
 			objWin.document.write("<p>");
-            objWin.document.write("대학입시 자기소개서 작성 연습도구 - http://sukso96100.github.io/univ-self-intro-form");
+            objWin.document.write("ResumeUtil - 대학입시 자기소개서 작성 연습도구 - http://youngbin.tk/resumeutil");
             objWin.document.write("</p>");
             objWin.document.write("<h1>");
             objWin.document.write("2015학년도 학생부 전형 자기소개서 공통양식");
