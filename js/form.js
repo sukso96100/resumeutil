@@ -1,6 +1,6 @@
 function initpage(){
     loadJson()
-//    loadFormData()
+    loadFormData()
 }
 
 

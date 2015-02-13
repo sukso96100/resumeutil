@@ -22,18 +22,15 @@
         <script src="js/initparse.js"></script>
         <script src="js/user.js"></script>
         <script src="js/form.js"></script>
+        <script src="js/toast.js"></script>
         
 <!--        HTML Imports-->
         <link rel="import" href="bower_components/core-elements/core-elements.html">
         <link rel="import" href="bower_components/paper-elements/paper-elements.html">
         <link rel="import" href="elements/drawer-content.html">
         
-        <style>
-        .wrap{
-        width: 100%;
-        max-width: 100%;}
-            select, option { width: 100%; }
-        </style>
+<!--       Stylesheet-->
+        <link rel="stylesheet" href="css/common.css">
 <!--        Title-->
         <title>ResumeUtil</title>
         
@@ -47,7 +44,7 @@
                 <core-toolbar>
                   <div>ResumeUtil</div>
                 </core-toolbar>
-                <div style="margin: 16px;">
+                <div class="content-area">
                     <!--        Contents-->
                     <div id="printArea">
                         <div class="well">
@@ -104,5 +101,6 @@
                 </div>
             </core-header-panel>
         </core-drawer-panel>
+        <paper-toast id="toast"></paper-toast>
     </body>
 </html>

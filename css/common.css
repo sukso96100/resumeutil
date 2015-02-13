@@ -1,0 +1,17 @@
+.wrap{
+    width: 100%;
+    max-width: 100%;
+}
+
+.content-area{
+    margin: 32px;
+}
+
+select, option {
+    width: 100%;
+}
+
+.usercard{
+    padding: 32px;
+    max-width: 500px;
+}
