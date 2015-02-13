@@ -47,15 +47,18 @@
         
     </head>
     <body onload="initPage()">
-        <core-drawer-panel>
-            <core-header-panel flex drawer>
+        <core-drawer-panel id="drawerPanel">
+            <core-header-panel flex drawer style="background: white;">
                 <drawer-content></drawer-content>
               </core-header-panel>
             <core-header-panel flex main>
                 <core-toolbar>
+                    <paper-icon-button id="navicon" icon="menu" ></paper-icon-button>
                   <div>ResumeUtil</div>
                 </core-toolbar>
                 <div class="content-area">
+                    <div class="g-plusone" data-href="http://www.youngbin.tk/resumeutil"></div>
+         <div class="fb-like" data-href="http://www.youngbin.tk/resumeutil" data-layout="button_count" data-action="like" data-show-faces="false" data-share="false"></div>
                     <!--        Contents-->
                     <div id="printArea">
                         <div class="well">
@@ -113,5 +116,20 @@
             </core-header-panel>
         </core-drawer-panel>
         <paper-toast id="toast"></paper-toast>
+        <!--        Google Plus One Button-->
+        <!-- 이 태그를 head 태그에 배치하거나 닫는 body 태그 바로 앞에 배치하세요. -->
+        <script src="https://apis.google.com/js/platform.js" async defer>
+          {lang: 'ko'}
+        </script>
+        
+<!--        Facebook JS SDK-->
+        <div id="fb-root"></div>
+        <script>(function(d, s, id) {
+          var js, fjs = d.getElementsByTagName(s)[0];
+          if (d.getElementById(id)) return;
+          js = d.createElement(s); js.id = id;
+          js.src = "//connect.facebook.net/ko_KR/sdk.js#xfbml=1&version=v2.0";
+          fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));</script>
     </body>
 </html>

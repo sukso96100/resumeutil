@@ -15,3 +15,9 @@ select, option {
     padding: 32px;
     max-width: 500px;
 }
+
+/* drawer is always visible on a wide screen
+   so menu button isn't required */
+core-drawer-panel:not([narrow]) #navicon {
+  display: none;
+}
