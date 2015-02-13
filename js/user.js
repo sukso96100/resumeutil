@@ -47,7 +47,7 @@ function newUserTask(){
             }
         });
 }
-        //비밀번호 찿기 함수
+        //비밀번호 찾기 함수
 function resetPasswordTask(){
     var passwordreset = document.getElementById('passwordreset').value;
 
@@ -58,7 +58,7 @@ function resetPasswordTask(){
         },
         error: function(error) {
             // Show the error message somewhere
-            showToast("비밀번호 찿기 오류("+error.code+")\n"+error.message);
+            showToast("비밀번호 찾기 오류("+error.code+")\n"+error.message);
         }
     });
 }
