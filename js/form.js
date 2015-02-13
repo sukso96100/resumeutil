@@ -1,4 +1,9 @@
 document.addEventListener('polymer-ready', function() {
+	if(CurrentUserVar!=null){
+    loadFormData()
+    document.getElementById("usernameitem").setAttribute("label",CurrentUserVar.getUsername());
+        }
+	
   var navicon = document.getElementById('navicon');
   var drawerPanel = document.getElementById('drawerPanel');
   navicon.addEventListener('click', function() {
@@ -6,13 +11,6 @@ document.addEventListener('polymer-ready', function() {
   });
 });
 
-document.addEventListener('polymer-ready', function() {
-	if(CurrentUserVar!=null){
-    loadFormData()
-    document.getElementById("usernameitem").setAttribute("label",CurrentUserVar.getUsername());
-        }
-  });
-});
 
 function initPage(){
     console.log("onload")
