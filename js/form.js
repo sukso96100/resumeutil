@@ -3,16 +3,13 @@ document.addEventListener('polymer-ready', function() {
   var drawerPanel = document.getElementById('drawerPanel');
   navicon.addEventListener('click', function() {
     drawerPanel.togglePanel();
-  });
-});
-
-window.addEventListener('WebComponentsReady', function () {
-      console.log("WebComponentsReady");
+    
     if(CurrentUserVar!=null){
     loadFormData()
     document.getElementById("usernameitem").setAttribute("label",CurrentUserVar.getUsername());
         }
-    });
+  });
+});
 
 function initPage(){
     console.log("onload")
