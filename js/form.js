@@ -1,6 +1,6 @@
 function initpage(){
     loadJson()
-    loadFormData()
+//    loadFormData()
 }
 
 
@@ -14,17 +14,20 @@ $.getJSON( "strings.json", function( data ) {
         
          $('#q4select').append(item);
 
-        }
-    });
+    }
+ 
+});
 }
 
-function setQ4(){   
+function setQ4(){
     var q4select = document.getElementById("q4select");
     console.log(q4select)
     var item = q4select.options[q4select.selectedIndex].value;
     console.log(item)
     document.getElementById("q4qinput").value = item;   
 }
+
+
 
  //양식 저장 한수
         function saveFormData(){
