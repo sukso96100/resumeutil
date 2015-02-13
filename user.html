@@ -31,8 +31,15 @@
         <title>ResumeUtil</title>
         
     </head>
-    <body onload="loginCheckUserpage()">
-       <div align="center" class="content-area">
+    <body onload="loginCheckUserpage()" fullbleed layout vertical>
+       <core-header-panel flex>
+           
+  <core-toolbar>
+      <a href="index.html"><paper-icon-button icon="arrow-back"></paper-icon-button></a>
+      <div>내 계정</div>
+           </core-toolbar>
+  <div align="center" class="content-area">
+           
            <paper-shadow z="1" class="usercard">
                <core-icon icon="account-circle"></core-icon>
                 <h1>내 계정 정보</h1>
@@ -55,10 +62,8 @@
                <paper-button raised style="background: green; color:white;" onclick="changePasswordTask()">
                <core-icon icon="find-replace"></core-icon>비밀번호 변경하기</paper-button>
             </paper-shadow><br>
-           
-           
         </div>
-        
+</core-header-panel>
         <paper-toast id="toast"></paper-toast>
     </body>
 </html>

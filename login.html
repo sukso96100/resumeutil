@@ -31,9 +31,16 @@
         <title>ResumeUtil</title>
         
     </head>
-    <body onload="loginCheckLoginpage()()">
-       <div align="center" class="content-area">
-           <paper-shadow z="1" class="usercard">
+    <body onload="loginCheckLoginpage()" fullbleed layout vertical>
+          <core-header-panel flex>
+           
+  <core-toolbar>
+      <a href="index.html"><paper-icon-button icon="arrow-back"></paper-icon-button></a>
+      <div>로그인</div>
+           </core-toolbar>
+  <div align="center" class="content-area">
+           
+        <paper-shadow z="1" class="usercard">
                <core-icon icon="account-circle"></core-icon>
                 <h1>로그인</h1>
                 <paper-input-decorator label="사용자 계정이름(ID) 입력">
@@ -75,7 +82,7 @@
                <core-icon icon="create"></core-icon>새로 계정 생성하기</paper-button>
             </paper-shadow>
         </div>
-        
+</core-header-panel>
         <paper-toast id="toast"></paper-toast>
     </body>
 </html>

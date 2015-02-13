@@ -11,7 +11,7 @@ function moveToLogin(){
 function loginCheckLoginpage(){
   if(CurrentUserVar!=null){
     //If Logged In
-      location.href="index-new.html"
+      location.href="index.html"
   }
 }
 
@@ -91,7 +91,6 @@ function showUserInfo(){
 function logoutTask(){
     Parse.User.logOut();
     CurrentUserVar = Parse.User.current();
-    showToast(CurrentUserVar.getUsername()+" 님, 안녕하세요.")
     location.reload();
 }
 
