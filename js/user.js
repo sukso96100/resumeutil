@@ -91,6 +91,7 @@ function showUserInfo(){
 function logoutTask(){
     Parse.User.logOut();
     CurrentUserVar = Parse.User.current();
+    showToast(CurrentUserVar.getUsername()+" 님, 안녕하세요.")
     location.reload();
 }
 

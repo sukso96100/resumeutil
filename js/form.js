@@ -1,6 +1,15 @@
-function initPage(){
-    loadJson()
+window.addEventListener('WebComponentsReady', function () {
+      console.log("WebComponentsReady");
+    if(CurrentUserVar!=null){
     loadFormData()
+    document.getElementById("usernameitem").setAttribute("label",CurrentUserVar.getUsername());
+        }
+    });
+
+function initPage(){
+    console.log("onload")
+    loadJson()
+//    loadFormData()
 //     showToast(CurrentUserVar.getUsername()+" 님, 안녕하세요.")    
 
 }
@@ -35,7 +44,7 @@ function setQ4(){
         function saveFormData(){
             console.log("saving...")
             if(CurrentUserVar==null){
-                $('#LogInModal').modal('show')
+                location.href="login.html"
             }else{
              showToast("저장 중");
             var q1data = document.getElementById('q1').value;
@@ -129,6 +138,10 @@ function setQ4(){
                     document.getElementById('q4').value = results.get("q4");
                     document.getElementById('q4qinput').value = results.get("q4qinput");
                     showToast("불러오기 완료");
+                    setTimeout(function(){ 
+                        showToast(CurrentUserVar.getUsername()+" 님, 안녕하세요.")   
+                    }, 1000);
+                     
                 },
                 error: function(error) {
                     //Data Not Exist
@@ -146,6 +159,7 @@ function textCounter(field,withspace) {
     var withoutspace_num = field.value.replace(/\s/g,"").length;
     var line = "공백 포함 "+withspace_num+"자 입력됨 | 공백 비포함 "+withoutspace_num+"자 입력됨";
     cntfield.value = line;
+    saveFormData()
 }
         
 //인쇄 함수
