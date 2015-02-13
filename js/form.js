@@ -1,14 +1,14 @@
 document.addEventListener('polymer-ready', function() {
-	if(CurrentUserVar!=null){
-    loadFormData()
-    document.getElementById("usernameitem").setAttribute("label",CurrentUserVar.getUsername());
-        }
-	
   var navicon = document.getElementById('navicon');
   var drawerPanel = document.getElementById('drawerPanel');
   navicon.addEventListener('click', function() {
     drawerPanel.togglePanel();
   });
+  
+  if(CurrentUserVar!=null){
+    loadFormData()
+    document.getElementById("usernameitem").setAttribute("label",CurrentUserVar.getUsername());
+        }
 });
 
 
