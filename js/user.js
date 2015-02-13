@@ -29,23 +29,26 @@ function newUserTask(){
     var newusername = document.getElementById('newusername').value;
     var newpassword = document.getElementById('newpassword').value;
     var newemail = document.getElementById('newemail').value;
+    if(newpassword.length<8){
+        showToast("사용하고자 하시는 비밀번호는 너무 짧습니다. 8자 이상으로 해 주세요.");
+    }else{
+         var user = new Parse.User();
+        user.set("username", newusername);
+        user.set("password", newpassword);
+        user.set("email", newemail);
+        //user.set("emailVerified", false);
 
-    var user = new Parse.User();
-    user.set("username", newusername);
-    user.set("password", newpassword);
-    user.set("email", newemail);
-    //user.set("emailVerified", false);
-
-    user.signUp(null, {
-        success: function(user) {
-            // Hooray! Let them use the app now.
-            showToast("가입해 주셔서 감사합니다. 가입 완료를 위해, 인증 메일을 확인해주세요.");
-            },
-        error: function(user, error) {
-            // Show the error message somewhere and let the user try again.
-           showToast("회원가입 오류("+error.code+")\n"+error.message);
-            }
-        });
+        user.signUp(null, {
+            success: function(user) {
+                // Hooray! Let them use the app now.
+                showToast("가입해 주셔서 감사합니다. 가입 완료를 위해, 인증 메일을 확인해주세요.");
+                },
+            error: function(user, error) {
+                // Show the error message somewhere and let the user try again.
+               showToast("회원가입 오류("+error.code+")\n"+error.message);
+                }
+            });
+    }
 }
         //비밀번호 찾기 함수
 function resetPasswordTask(){
@@ -99,7 +102,9 @@ function logoutTask(){
 var newpass = document.getElementById('newpass').value;
 var newpasscheck = document.getElementById('newpasscheck').value;
 
-if(newpass==newpasscheck){
+if(newpass.length<8){
+    showToast("입력하신 새 비밀번호는 너무 짧습니다. 8자 이상으로 해 주세요.");
+}else if(newpass==newpasscheck){
    
     CurrentUserVar.set("password", newpass);  // attempt to change username
     CurrentUserVar.save(null, {
