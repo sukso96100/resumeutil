@@ -3,12 +3,12 @@ document.addEventListener('polymer-ready', function() {
   var drawerPanel = document.getElementById('drawerPanel');
   navicon.addEventListener('click', function() {
     drawerPanel.togglePanel();
-    
-    if(CurrentUserVar!=null){
+  });
+  
+  if(CurrentUserVar!=null){
     loadFormData()
     document.getElementById("usernameitem").setAttribute("label",CurrentUserVar.getUsername());
         }
-  });
 });
 
 function initPage(){
