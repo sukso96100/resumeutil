@@ -1,6 +1,8 @@
-function initpage(){
+function initPage(){
     loadJson()
     loadFormData()
+//     showToast(CurrentUserVar.getUsername()+" 님, 안녕하세요.")    
+
 }
 
 
@@ -31,10 +33,11 @@ function setQ4(){
 
  //양식 저장 한수
         function saveFormData(){
+            console.log("saving...")
             if(CurrentUserVar==null){
                 $('#LogInModal').modal('show')
             }else{
-             document.getElementById('statemsg').innerHTML = "저장 중";
+             showToast("저장 중");
             var q1data = document.getElementById('q1').value;
             var q2data = document.getElementById('q2').value;
             var q3data = document.getElementById('q3').value;
@@ -62,10 +65,10 @@ function setQ4(){
                     
                     userIntroData.save(null, {
                         success: function(userIntroData) {  
-                            document.getElementById('statemsg').innerHTML = "저장 완료";
+                            showToast("저장 완료");
                             },
                         error: function(userIntroData, error) {
-                            document.getElementById('statemsg').innerHTML = "저장 오류 발생";
+                            showToast("저장 오류 발생");
                               }
                             });
                     }else{
@@ -76,10 +79,10 @@ function setQ4(){
                         object.set("q4qinput",q4qinputdata);
                         object.save(null, {
                         success: function(userIntroData) {  
-                            document.getElementById('statemsg').innerHTML = "저장 완료";
+                            showToast("저장 완료");
                             },
                         error: function(userIntroData, error) {
-                            document.getElementById('statemsg').innerHTML = "저장 오류 발생";
+                            showToast("저장 오류 발생");
                               }
                             });
                     }
@@ -97,10 +100,10 @@ function setQ4(){
                     
                     userIntroData.save(null, {
                         success: function(userIntroData) {  
-                            document.getElementById('statemsg').innerHTML = "저장 완료";
+                            showToast("저장 완료");
                             },
                         error: function(userIntroData, error) {
-                            document.getElementById('statemsg').innerHTML = "저장 오류 발생";
+                            showToast("저장 오류 발생");
                               }
                             });
                         }
@@ -110,9 +113,10 @@ function setQ4(){
 
         //저장된 양식 불러오기 함수
         function loadFormData(){
+            console.log("Loading Data")
             if(CurrentUserVar==null){
             }else{
-             document.getElementById('statemsg').innerHTML = "불러오는 중";
+             showToast("불러오는 중");
             var UserIntroData = Parse.Object.extend("UserIntroData");
             var query = new Parse.Query(UserIntroData);
             query.equalTo("username", CurrentUserVar.getUsername());
@@ -124,11 +128,11 @@ function setQ4(){
                     document.getElementById('q3').value = results.get("q3");
                     document.getElementById('q4').value = results.get("q4");
                     document.getElementById('q4qinput').value = results.get("q4qinput");
-                    document.getElementById('statemsg').innerHTML = "불러오기 완료";
+                    showToast("불러오기 완료");
                 },
                 error: function(error) {
                     //Data Not Exist
-                     document.getElementById('statemsg').innerHTML = "";
+//                     document.getElementById('statemsg').innerHTML = "";
                         }
                     });
             }

@@ -32,49 +32,32 @@
         <title>ResumeUtil</title>
         
     </head>
-    <body onload="loginCheck()">
+    <body onload="loginCheckUserpage()">
        <div align="center" class="content-area">
            <paper-shadow z="1" class="usercard">
                <core-icon icon="account-circle"></core-icon>
-                <h1>로그인</h1>
-                <paper-input-decorator label="사용자 계정이름(ID) 입력">
-                    <input id="username" type="text">
-                </paper-input-decorator>
-                <paper-input-decorator label="비밀번호 입력">
-                    <input id="password" type="password">
-                </paper-input-decorator>
-               
-               <paper-button raised style="background: green; color:white;" onclick="loginTask()">
-               <core-icon icon="lock-open"></core-icon>로그인</paper-button>
+                <h1>내 계정 정보</h1>
+               <h2 id="CurrentUserName">Username</h2>
+               <h4 id="CurrentUserEmail">Email</h4>
+               <paper-button raised style="background: green; color:white;" onclick="logoutTask()">
+               <core-icon icon="exit-to-app"></core-icon>로그아웃</paper-button>
             </paper-shadow><br>
            
            <paper-shadow z="1" class="usercard">
-               <core-icon icon="error"></core-icon>
+               <core-icon icon="find-replace"></core-icon>
                 <h1>비밀번호 찾기</h1>
-                <paper-input-decorator label="가입시 입력한 이메일 주소 입력">
-                    <input id="passwordreset" type="text">
+                <paper-input-decorator label="새로 사용할 비밀번호 입력">
+                    <input id="newpass" type="password">
+                </paper-input-decorator>
+               <paper-input-decorator label="비밀번호 확인">
+                    <input id="newpasscheck" type="password">
                 </paper-input-decorator>
                
-               <paper-button raised style="background: green; color:white;" onclick="resetPasswordTask()">
-               <core-icon icon="find-replace"></core-icon>비밀번호 찾기</paper-button>
+               <paper-button raised style="background: green; color:white;" onclick="changePasswordTask()">
+               <core-icon icon="find-replace"></core-icon>비밀번호 변경하기</paper-button>
             </paper-shadow><br>
            
-           <paper-shadow z="1" class="usercard">
-               <core-icon icon="add-circle"></core-icon>
-                <h1>새 계정 만들기</h1>
-                <paper-input-decorator label="사용할 사용자 계정이름(ID) 입력">
-                    <input id="newusername" type="text">
-                </paper-input-decorator>
-               <paper-input-decorator label="비밀번호 입력">
-                    <input id="newpassword" type="password">
-                </paper-input-decorator>
-               <paper-input-decorator label="이메일 주소 입력">
-                    <input id="newemail" type="text">
-                </paper-input-decorator>
-               
-               <paper-button raised style="background: green; color:white;" onclick="newUserTask()">
-               <core-icon icon="input"></core-icon>새로 계정 생성하기</paper-button>
-            </paper-shadow>
+           
         </div>
         
         <paper-toast id="toast"></paper-toast>

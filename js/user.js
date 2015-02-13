@@ -8,10 +8,19 @@ function moveToLogin(){
   }
 }
 
-function loginCheck(){
+function loginCheckLoginpage(){
   if(CurrentUserVar!=null){
-    //Unless Logged In
+    //If Logged In
       location.href="index-new.html"
+  }
+}
+
+function loginCheckUserpage(){
+  if(CurrentUserVar==null){
+    //Unless Logged In
+      location.href="login.html"
+  }else{
+  showUserInfo()
   }
 }
 
@@ -73,15 +82,10 @@ function loginTask(){
 }
 
         //사용자 계정 정보 창 보이기 함수
-function openUserModal(){
-    if(CurrentUserVar==null){
-        $('#LogInModal').modal('show')
-    }else{
-        $('#UserInfoModal').modal('show')
+function showUserInfo(){
         document.getElementById('CurrentUserName').innerHTML = CurrentUserVar.getUsername();
         document.getElementById('CurrentUserEmail').innerHTML = CurrentUserVar.getEmail();
     }
-}
      
         //사용자 로그아웃 함수
 function logoutTask(){
@@ -101,7 +105,7 @@ if(newpass==newpasscheck){
     CurrentUserVar.save(null, {
       success: function(user) {
         // This succeeds, since the user was authenticated on the device
-          document.getElementById('ChangePasswordResult').innerHTML = "비밀번호 변경이 성공적으로 이뤄졌습니다.";
+          showToast("비밀번호 변경이 성공적으로 이뤄졌습니다.");
    
         // Get the user from a non-authenticated method
         var query = new Parse.Query(Parse.User);
@@ -110,7 +114,7 @@ if(newpass==newpasscheck){
 userAgain.set("username", "another_username");
 userAgain.save(null, {
   error: function(userAgain, error) {
-   document.getElementById('ChangePasswordResult').innerHTML = "사용자 인증 오류.";
+   showToast("사용자 인증 오류.");
   }
 });
           }
@@ -119,7 +123,7 @@ userAgain.save(null, {
     });
     }
    else{
-        document.getElementById('ChangePasswordResult').innerHTML = "새 비밀번호 입력란과 확인란에 입력한 비밀번호가 다릅니다.";
+        showToast("새 비밀번호 입력란과 확인란에 입력한 비밀번호가 다릅니다.");
    }
         
         }

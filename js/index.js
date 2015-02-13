@@ -1,4 +1,0 @@
-//function initpage(){
-//    loadJson()
-//    loadFormData()
-//}
