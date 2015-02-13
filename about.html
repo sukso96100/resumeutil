@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+    <head>
+<!--        Some METAs-->
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+<!--        Older IE Support-->
+        <!--[if lt IE 9]>
+            <script src="bower_components/html5shiv/dist/html5shiv.js"></script>
+        <![endif]-->
+        
+<!--        Webcomponets Support-->
+        <script src="bower_components/webcomponentsjs/webcomponents.js"></script>
+        
+<!--        HTML Imports-->
+        
+        <link rel="import" href="bower_components/core-header-panel/core-header-panel.html">
+        <link rel="import" href="bower_components/core-toolbar/core-toolbar.html">
+        <link rel="import" href="bower_components/paper-icon-button/paper-icon-button.html">
+        <link rel="import" href="bower_components/core-icon/core-icon.html">
+        <link rel="import" href="bower_components/paper-shadow/paper-shadow.html">
+        <link rel="import" href="bower_components/paper-button/paper-button.html">
+        
+        <!--       Stylesheet-->
+        <link rel="stylesheet" href="css/common.css">
+<!--        Title-->
+        <title>ResumeUtil</title>
+        
+    </head>
+    <body fullbleed layout vertical>
+       <core-header-panel flex>
+           
+  <core-toolbar>
+      <a href="index.html"><paper-icon-button icon="arrow-back"></paper-icon-button></a>
+      <div>ResumeUtil 에 대해</div>
+           </core-toolbar>
+  <div align="center" class="content-area">
+           
+           <paper-shadow z="1" class="usercard">
+               <h1>이게 뭐죠?</h1>
+               <p>여러분들이 대학 입시(수시-학생부 종합전형)에 사용하는 자기소개서 작성을 연습할 떄 사용하실 수 있는 웹사이트 입니다.
+                   개발자 양반이 예전에 어느 한 대학교 모의면접을 준비하다가, 자기소개서 파일 양식이 *.hwp 인 것을 보고 빡쳐서 당일에 즉석에서 만든 웹사이트 입니다.
+                양식에 따라 작성해 보신 후, 바로 글자수 확인을 하실 수 있으며, 온라인에 저장하고 나중에 다른 곳에서 계속 수정도 가능합니다.
+               4번 문항의 경우는 여러분들이 원하는 대학의 질문으로 선택하여 작성 가능합니다. 해당 대학 질문이 없으면 직접 질문 칸에 작성하실 수 있습니다.</p>
+               <br>
+               
+               <h1>개발자 정보</h1>
+               <p>한영빈(sukso96100@gmail.com)</p>
+               
+               <h1>소스코드</h1>
+               <p>웹사이트 소스코드가 궁금하면 한번 들여다 보세요. 오픈소스이니 자유롭게 들여다 보시거나 수정도 가능합니다.
+               GitHub 에서 Pull Request 를 통해 기여를 해 주셔도 좋습니다. 소스코드 라이선스는 GPL V3+ 입니다.</p>
+               <a href="https://github.com/sukso96100/resumeutil"></a><paper-button raised style="background: green; color:white;">
+               <core-icon icon="archive"></core-icon>소스코드 얻기</paper-button>
+            </paper-shadow><br>
+           
+
+        </div>
+</core-header-panel>
+    </body>
+</html>

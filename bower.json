@@ -1,0 +1,23 @@
+{
+  "name": "resumeutil",
+  "version": "0.1",
+  "homepage": "https://github.com/sukso96100/resumeutil",
+  "authors": [
+    "Youngbin Han <sukso96100@gmail.com>"
+  ],
+  "description": "A Tool for Practice Writting Resume for University Enterance",
+  "main": "index.html",
+  "license": "GPL V3+",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "polymer": "Polymer/polymer#~0.5.4",
+    "core-elements": "Polymer/core-elements#~0.5.4",
+    "paper-elements": "Polymer/paper-elements#~0.5.4"
+  }
+}

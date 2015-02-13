@@ -1,0 +1,18 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/core-menu/core-menu.html">
+<link rel="import" href="../bower_components/core-item/core-item.html">
+<link rel="import" href="../bower_components/paper-item/paper-item.html">
+<polymer-element name="drawer-content">
+  <template>
+     <core-menu>
+        <a href="javascript:moveToLogin()"><paper-item><core-item icon="account-circle" label="로그인" id="usernameitem"></core-item></paper-item></a>
+        <a href="javascript:saveFormData()"><paper-item><core-item icon="save" label="저장"></core-item></paper-item></a>
+        <a href="javascript:printContent()"><paper-item><core-item icon="print" label="인쇄"></core-item></paper-item></a>
+        <a href="../about.html"><paper-item><core-item icon="info" label="ResumeUtil 에 대해"</core-item></paper-item></a>
+    </core-menu>
+  </template>
+  <script>
+    Polymer();
+  </script>
+</polymer-element> 
+
