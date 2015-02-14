@@ -8,6 +8,7 @@ function moveToLogin(){
   }
 }
 
+//로그인 확인 - 로그인 페이지용
 function loginCheckLoginpage(){
   if(CurrentUserVar!=null){
     //If Logged In
@@ -15,6 +16,7 @@ function loginCheckLoginpage(){
   }
 }
 
+//로그인 확인 - 사용자 정보 페이지용
 function loginCheckUserpage(){
   if(CurrentUserVar==null){
     //Unless Logged In
