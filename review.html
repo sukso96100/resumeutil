@@ -19,6 +19,7 @@
         <script src="js/initparse.js"></script>
         <script src="js/user.js"></script>
         <script src="js/toast.js"></script>
+        <script src="js/review.js"></script>
         
 <!--        HTML Imports-->
         <link rel="import" href="bower_components/core-header-panel/core-header-panel.html">
@@ -43,32 +44,18 @@
            
   <core-toolbar>
       <a href="index.html"><paper-icon-button icon="arrow-back"></paper-icon-button></a>
-      <div>내 계정</div>
+      <div>첨삭하기</div>
            </core-toolbar>
   <div align="center" class="content-area">
            
-           <paper-shadow z="1" class="usercard">
-               <core-icon icon="account-circle"></core-icon>
-                <h1>내 계정 정보</h1>
-               <h2 id="CurrentUserName">Username</h2>
-               <h4 id="CurrentUserEmail">Email</h4>
-               <paper-radio-button id="public-toggle" label="[준비중]공개적으로 첨삭받기(모두가 읽고 댓글을 추가할 수 있습니다.)" toggles="true" disabled="true"></paper-radio-button><br><br>
-               <paper-button raised style="background: green; color:white;" onclick="logoutTask()">
-               <core-icon icon="exit-to-app"></core-icon>로그아웃</paper-button>
+           <paper-shadow z="1" class="largecard">
+               <paper-input-decorator label="첨삭할 사용자의 계정이름(ID) 입력">
+                    <input type="text" onkeyup="setHash(this)">
+                </paper-input-decorator>
             </paper-shadow><br>
            
-           <paper-shadow z="1" class="usercard">
-               <core-icon icon="find-replace"></core-icon>
-                <h1>비밀번호 찾기</h1>
-                <paper-input-decorator label="새로 사용할 비밀번호 입력">
-                    <input id="newpass" type="password">
-                </paper-input-decorator>
-               <paper-input-decorator label="비밀번호 확인">
-                    <input id="newpasscheck" type="password">
-                </paper-input-decorator>
+           <paper-shadow z="1" class="largecard">
                
-               <paper-button raised style="background: green; color:white;" onclick="changePasswordTask()">
-               <core-icon icon="find-replace"></core-icon>비밀번호 변경하기</paper-button>
             </paper-shadow><br>
         </div>
 </core-header-panel>

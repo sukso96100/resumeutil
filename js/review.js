@@ -1,3 +1,7 @@
+function setHash(element){
+window.location.hash=element.value;
+    }
+
 document.addEventListener('polymer-ready', function() {
   setPublicToggleState()
   });
