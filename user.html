@@ -35,6 +35,17 @@
         
         <!--       Stylesheet-->
         <link rel="stylesheet" href="css/common.css">
+         <!--Legacy Browser Check-->
+        <script> 
+        var $buoop = {c:2}; 
+        function $buo_f(){ 
+         var e = document.createElement("script"); 
+         e.src = "//browser-update.org/update.js"; 
+         document.body.appendChild(e);
+        };
+        try {document.addEventListener("DOMContentLoaded", $buo_f,false)}
+        catch(e){window.attachEvent("onload", $buo_f)}
+        </script> 
 <!--        Title-->
         <title>ResumeUtil</title>
         
@@ -64,7 +75,7 @@
                </paper-shadow><br>
            <paper-shadow z="1" class="usercard">
                <core-icon icon="find-replace"></core-icon>
-                <h1>비밀번호 찾기</h1>
+                <h1>비밀번호 변경</h1>
                 <paper-input-decorator label="새로 사용할 비밀번호 입력">
                     <input id="newpass" type="password">
                 </paper-input-decorator>

@@ -25,6 +25,17 @@
         
         <!--       Stylesheet-->
         <link rel="stylesheet" href="css/common.css">
+         <!--Legacy Browser Check-->
+        <script> 
+        var $buoop = {c:2}; 
+        function $buo_f(){ 
+         var e = document.createElement("script"); 
+         e.src = "//browser-update.org/update.js"; 
+         document.body.appendChild(e);
+        };
+        try {document.addEventListener("DOMContentLoaded", $buo_f,false)}
+        catch(e){window.attachEvent("onload", $buo_f)}
+        </script> 
 <!--        Title-->
         <title>ResumeUtil</title>
         
@@ -52,8 +63,8 @@
                <h1>소스코드</h1>
                <p>웹사이트 소스코드가 궁금하면 한번 들여다 보세요. 오픈소스이니 자유롭게 들여다 보시거나 수정도 가능합니다.
                GitHub 에서 Pull Request 를 통해 기여를 해 주셔도 좋습니다. 소스코드 라이선스는 GPL V3+ 입니다.</p>
-               <a href="https://github.com/sukso96100/resumeutil"></a><paper-button raised style="background: green; color:white;">
-               <core-icon icon="archive"></core-icon>소스코드 얻기</paper-button>
+               <a href="https://github.com/sukso96100/resumeutil"><paper-button raised style="background: green; color:white;">
+               <core-icon icon="archive"></core-icon>소스코드 얻기</paper-button></a>
             </paper-shadow><br>
            
 
