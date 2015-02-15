@@ -6,7 +6,7 @@ if (event.keyCode == 13){
     }
 
 function setHash(){
-window.location.hash=document.getElementById("usernameinput").value;
+window.location.hash="!"+document.getElementById("usernameinput").value;
     }
 
 document.addEventListener('polymer-ready', function() {
@@ -132,11 +132,11 @@ function loadPublicUserForm(){
     showToast("찾는 중")
     var userName = getHash()
     userName.replace(/\s/g,"")
-    userName.replace(/\#/g,"")  
+//    userName.replace("!","")  
     
     console.log(userName)
     console.log("Loading Data")
-           loadDisqus(userName);
+           changeThread(userName)
              showToast("불러오는 중");
             var UserIntroData = Parse.Object.extend("UserIntroData");
             var query = new Parse.Query(UserIntroData);
@@ -181,25 +181,10 @@ function loadPublicUserForm(){
 }
 
 function getHash() {
-    var hash = location.hash.substring(1)
-    hash.replace(/\s/g,"")
-    hash.replace(/\#/g,"")
+    var hash = location.hash.replace("#!","")
+    console.log(hash)
   return hash;
 }
 
 
-function loadDisqus(username){
-/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
-        var disqus_shortname = 'resumeutil'; // required: replace example with your forum shortname
-    var disqus_identifier = window.location.href;
-    var disqus_url = window.location.href;
-    var disqus_title = username;
 
-        /* * * DON'T EDIT BELOW THIS LINE * * */
-        (function() {
-            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-        })();
-        
-    }
