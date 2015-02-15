@@ -19,6 +19,7 @@
         <script src="js/initparse.js"></script>
         <script src="js/user.js"></script>
         <script src="js/toast.js"></script>
+        <script src="js/review.js"></script>
         
 <!--        HTML Imports-->
         <link rel="import" href="bower_components/core-header-panel/core-header-panel.html">
@@ -29,6 +30,7 @@
         <link rel="import" href="bower_components/paper-button/paper-button.html">
         <link rel="import" href="bower_components/paper-input/paper-input-decorator.html">
         <link rel="import" href="bower_components/paper-toast/paper-toast.html">
+        <link rel="import" href="bower_components/paper-toggle-button/paper-toggle-button.html">
 
         
         <!--       Stylesheet-->
@@ -62,10 +64,15 @@
                 <h1>내 계정 정보</h1>
                <h2 id="CurrentUserName">Username</h2>
                <h4 id="CurrentUserEmail">Email</h4>
+               <br><br>
                <paper-button raised style="background: green; color:white;" onclick="logoutTask()">
                <core-icon icon="exit-to-app"></core-icon>로그아웃</paper-button>
             </paper-shadow><br>
-           
+           <paper-shadow z="1" class="usercard">
+               
+               <div flex>[준비중]공개적으로 첨삭받기(누구든 읽기 및 댓글추가 가능)</div><br>
+                   <paper-toggle-button id="public-toggle" onchange="setPublic()"></paper-toggle-button>
+               </paper-shadow><br>
            <paper-shadow z="1" class="usercard">
                <core-icon icon="find-replace"></core-icon>
                 <h1>비밀번호 변경</h1>
@@ -76,7 +83,7 @@
                     <input id="newpasscheck" type="password">
                 </paper-input-decorator>
                
-               <paper-button raised style="background: green; color:white;" onclick="changePasswordTask()">
+               <paper-button raised style="background: green; color:white;" change="changePasswordTask()">
                <core-icon icon="find-replace"></core-icon>비밀번호 변경하기</paper-button>
             </paper-shadow><br>
         </div>

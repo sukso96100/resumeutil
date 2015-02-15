@@ -11,7 +11,6 @@ document.addEventListener('polymer-ready', function() {
         }
 });
 
-
 function initPage(){
     console.log("onload")
     loadJson()
@@ -168,6 +167,7 @@ function textCounter(field,withspace) {
     if(CurrentUserVar!=null){
  	saveFormData()
     }
+   
 }
         
 //인쇄 함수
