@@ -1,3 +1,13 @@
+var reset = function(){
+    DISQUS.reset({
+  reload: true,
+  config: function () {  
+    this.page.identifier = location.hash;  
+    this.page.url = location;
+  }
+});
+    }
+
 function setHashWithEnterKey(event){
 if (event.keyCode == 13){
     setHash()
@@ -175,14 +185,8 @@ function loadPublicUserForm(){
                         }
                     });
     
-    DISQUS.reset({
-  reload: true,
-  config: function () {  
-    this.page.identifier = location.hash;  
-    this.page.url = location;
-  }
-});
-            
+    
+            reset();
 }
 
 function getHash() {
