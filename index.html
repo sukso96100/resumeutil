@@ -65,11 +65,10 @@
                     <div class="g-plusone" data-href="http://www.youngbin.tk/resumeutil"></div>
          <div class="fb-like" data-href="http://www.youngbin.tk/resumeutil" data-layout="button_count" data-action="like" data-show-faces="false" data-share="false"></div>
                     <!--        Contents-->
-                    <div id="printArea">
-                        <div class="well">
+                    <div id="printArea"><br><br>    
+                        <paper-shadow z="1" class="largecard">
                             <h2>2015학년도 학생부 전형 자기소개서 공통양식</h2>
-                        </div>
-                        <div class="well">
+                
                             <h3>1. 고등학교 재학기간 중 학업에 기울인 노력과 학습 경험에 대해, 배우고 느낀 점을 중심으로 기술해 주시기 바랍니다(1,000자 이내).</h3>
                             <paper-input-decorator label="여기에 글자수가 표시됩니다">
                                 <input readonly type="text" id='q1length' name="q1length" label="여기에 글자수가 표시됩니다">
@@ -77,9 +76,7 @@
                             <paper-input-decorator>
                                 <textarea class="wrap" rows="25" id="q1" onKeyUp="textCounter(this,'q1length')"></textarea >
                             </paper-input-decorator>
-                        </div><br>
-                        
-                        <div class="well">
+                        <br>
                             <h3>2. 고등학교 재학기간 중 본인이 의미를 두고 노력했던 교내 활동을 배우고 느낀점을 중심으로 3개 이내로 기술해 주시기 바랍니다. 단, 교외 활동 중 학교장의 허락을 받고 참여한 활동은 포함됩니다(1,500자 이내).</h3>
                             <paper-input-decorator label="여기에 글자수가 표시됩니다">
                                 <input readonly type="text" id='q2length' name="q2length">
@@ -87,9 +84,7 @@
                             <paper-input-decorator>
                                  <textarea class="wrap" rows="30" id="q2" onKeyUp="textCounter(this,'q2length')"></textarea >
                             </paper-input-decorator>
-                        </div><br>
-
-                        <div class="well">
+                        <br>
                             <h3>3. 학교 생활 중 배려, 나눔, 협력, 갈등 관리 등을 실천한 사례를 들고, 그 과정을 통해 배우고 느낀 점을 기술해 주시기 바랍니다(1,000자 이내).</h3>
                             <paper-input-decorator label="여기에 글자수가 표시됩니다">
                                 <input readonly type="text" id='q3length' name="q3length">
@@ -97,9 +92,8 @@
                             <paper-input-decorator>
                                 <textarea class="wrap" rows="25" id="q3" onKeyUp="textCounter(this,'q3length')"></textarea >
                             </paper-input-decorator>
-                        </div><br>
+                        <br>
 
-                            <div class="well">
                                 <h4>(4번 질문은 대학교별로 다릅니다, 원하시는 대학교의 질문을 선택하신 후, 답하세요.)</h4>
                                 <select id="q4select" onchange="setQ4()" onclick="setQ4()" onfocus="setQ4()">
                                     <option>질문 없음</option>
@@ -114,8 +108,8 @@
                                 <paper-input-decorator>
                                     <textarea class="wrap" rows="25" id="q4" onKeyUp="textCounter(this,'q4length')"></textarea >
                                 </paper-input-decorator>
-                            </div><br>
-
+                            <br>
+                            </paper-shadow>
                 </div>
                 </div>
             </core-header-panel>
