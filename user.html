@@ -80,7 +80,7 @@
                     <input id="newpass" type="password">
                 </paper-input-decorator>
                <paper-input-decorator label="비밀번호 확인">
-                    <input id="newpasscheck" type="password">
+                    <input id="newpasscheck" type="password" onkeypress="doWIthEnterKey(3)">
                 </paper-input-decorator>
                
                <paper-button raised style="background: green; color:white;" change="changePasswordTask()">

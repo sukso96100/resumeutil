@@ -1,3 +1,23 @@
+function doWithEnterKey(num){
+if (event.keyCode == 13){
+    switch(num){
+        case 0:
+            loginTask()
+            break;
+        case 1:
+            resetPasswordTask()
+            break;
+        case 2:
+            newUserTask()
+            break;
+        case 3:
+            changePasswordTask()
+            break;
+        default:
+    }
+        }
+    }
+
 function moveToLogin(){
   if(CurrentUserVar==null){
     //Unless Logged In
