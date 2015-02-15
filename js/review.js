@@ -147,7 +147,7 @@ function loadPublicUserForm(){
                         var contentarea = document.getElementById("content");
                     contentarea.innerHTML = "";
                     //Load Data
-                    var line = userName + " 님의 양식<br>마지막 수정시각 : " + results.updatedAt + "<br>";
+                    var line = userName + " 님의 양식<br>마지막 수정시각 - " + results.updatedAt + "<br>";
                     line = line + "<br>2015학년도 학생부 전형 자기소개서 공통양식<br><br>";
                     line = line + "<h3>1. 고등학교 재학기간 중 학업에 기울인 노력과 학습 경험에 대해, 배우고 느낀 점을 중심으로 기술해 주시기 바랍니다(1,000자 이내).</h3><br><p>"
                     line = line + results.get("q1");

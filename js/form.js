@@ -251,7 +251,7 @@ function showLastUpdate(){
             query.first({
                 success: function(results) {
                     //Load Data
-                    document.getElementById("updatedAt").innerHTML = "마지막 수정시각"+results.updatedAt;  
+                    document.getElementById("updatedAt").innerHTML = "마지막 수정시각 - "+results.updatedAt;  
                 },
                 error: function(error) {
                         }
