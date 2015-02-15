@@ -3,7 +3,7 @@ var reset = function(){
   reload: true,
   config: function () {  
     this.page.identifier = window.location.hash;  
-    this.page.url = "www.youngbin.tk/resumeutil"+window.location.hash;
+    this.page.url = "www.youngbin.tk/resumeutil/"+window.location.hash;
   }
 });
     }
