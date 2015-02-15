@@ -80,6 +80,7 @@ function setQ4(){
                     userIntroData.save(null, {
                         success: function(userIntroData) {  
                             showToast("저장 완료");
+                            showLastUpdate()
                             },
                         error: function(userIntroData, error) {
                             showToast("저장 오류 발생");
@@ -94,6 +95,7 @@ function setQ4(){
                         object.save(null, {
                         success: function(userIntroData) {  
                             showToast("저장 완료");
+                            showLastUpdate()
                             },
                         error: function(userIntroData, error) {
                             showToast("저장 오류 발생");
@@ -115,6 +117,7 @@ function setQ4(){
                     userIntroData.save(null, {
                         success: function(userIntroData) {  
                             showToast("저장 완료");
+                            showLastUpdate()
                             },
                         error: function(userIntroData, error) {
                             showToast("저장 오류 발생");
@@ -142,6 +145,7 @@ function setQ4(){
                     document.getElementById('q3').value = results.get("q3");
                     document.getElementById('q4').value = results.get("q4");
                     document.getElementById('q4qinput').value = results.get("q4qinput");
+                    showLastUpdate()
                     showToast("불러오기 완료");
                     setTimeout(function(){ 
                         showToast(CurrentUserVar.getUsername()+" 님, 안녕하세요.")   
@@ -236,3 +240,21 @@ function textCounter(field,withspace) {
 			objWin.print();
 			objWin.close();
     }
+
+function showLastUpdate(){
+             console.log("Loading Data")
+            if(CurrentUserVar==null){
+            }else{
+            var UserIntroData = Parse.Object.extend("UserIntroData");
+            var query = new Parse.Query(UserIntroData);
+            query.equalTo("username", CurrentUserVar.getUsername());
+            query.first({
+                success: function(results) {
+                    //Load Data
+                    document.getElementById("updatedAt").innerHTML = "마지막 수정시각"+results.updatedAt;  
+                },
+                error: function(error) {
+                        }
+                    });
+            }
+}
