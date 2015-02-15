@@ -177,7 +177,7 @@ function loadPublicUserForm(){
                     });
     
     
-            reset(getHash, 'http://youngbin.tk/resumeutil/review.html#'+getHash(), getHash());
+            loadDisqus(userName);
 }
 
 function getHash() {
@@ -186,3 +186,18 @@ function getHash() {
     hash.replace(/\#/g,"")
   return hash;
 }
+
+
+function loadDisqus(username){
+/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'resumeutil'; // required: replace example with your forum shortname
+    var disqus_identifier = username;
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+        
+    }
