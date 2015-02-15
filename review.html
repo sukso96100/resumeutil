@@ -15,7 +15,7 @@
         <script src="bower_components/webcomponentsjs/webcomponents.js"></script>
         
 <!--        Parse JS SDK-->
-        <script src="http://www.parsecdn.com/js/parse-1.3.0.min.js"></script>
+        <script src="https://www.parsecdn.com/js/parse-1.3.0.min.js"></script>
         <script src="js/initparse.js"></script>
         <script src="js/user.js"></script>
         <script src="js/toast.js"></script>
@@ -35,6 +35,17 @@
         
         <!--       Stylesheet-->
         <link rel="stylesheet" href="css/common.css">
+        <!--Legacy Browser Check-->
+        <script> 
+        var $buoop = {c:2}; 
+        function $buo_f(){ 
+         var e = document.createElement("script"); 
+         e.src = "//browser-update.org/update.js"; 
+         document.body.appendChild(e);
+        };
+        try {document.addEventListener("DOMContentLoaded", $buo_f,false)}
+        catch(e){window.attachEvent("onload", $buo_f)}
+        </script> 
 <!--        Title-->
         <title>ResumeUtil</title>
         
@@ -78,7 +89,7 @@
           reload: true,
           config: function () {  
             this.page.identifier = userName;
-            this.page.url = 'http://www.youngbin.tk/review.html#!'+userName;
+            this.page.url = 'https://www.youngbin.tk/review.html#!'+userName;
             this.page.title = userName;
           }
         });
