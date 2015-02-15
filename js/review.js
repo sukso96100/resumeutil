@@ -1,13 +1,3 @@
-var reset = function(){
-    DISQUS.reset({
-  reload: true,
-  config: function () {  
-    this.page.identifier = window.location.hash;  
-    this.page.url = "www.youngbin.tk/resumeutil"+window.location.hash;
-  }
-});
-    }
-
 function setHashWithEnterKey(event){
 if (event.keyCode == 13){
     setHash()
