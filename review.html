@@ -39,7 +39,7 @@
         <title>ResumeUtil</title>
         
     </head>
-    <body onload="loginCheckUserpage()" fullbleed layout vertical>
+    <body onhashchange="loadPublicUserForm()" onload="loadPublicUserForm()" fullbleed layout vertical>
        <core-header-panel flex>
            
   <core-toolbar>
@@ -50,13 +50,31 @@
            
            <paper-shadow z="1" class="largecard">
                <paper-input-decorator label="첨삭할 사용자의 계정이름(ID) 입력">
-                    <input type="text" onkeyup="setHash(this)">
+                    <input id="usernameinput" type="text" onkeypress="setHashWithEnterKey(event)">
                 </paper-input-decorator>
+               <paper-button raised style="background: green; color:white;" onclick="setHash()">
+                   <core-icon icon="search"></core-icon>공개된 양식 찾기</paper-button>
             </paper-shadow><br>
            
            <paper-shadow z="1" class="largecard">
-               
+               <section id="content"></section>
             </paper-shadow><br>
+      <paper-shadow z="1" class="largecard">
+          <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'resumeutil'; // required: replace example with your forum shortname
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscrdisquipt>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+      </paper-shadow>
+      
         </div>
 </core-header-panel>
         <paper-toast id="toast"></paper-toast>
