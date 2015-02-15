@@ -178,7 +178,7 @@ function loadPublicUserForm(){
     DISQUS.reset({
   reload: true,
   config: function () {  
-    this.page.identifier = userName;  
+    this.page.identifier = location.hash;  
     this.page.url = location;
   }
 });
