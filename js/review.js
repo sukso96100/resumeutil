@@ -1,3 +1,4 @@
+
 function setHashWithEnterKey(event){
 if (event.keyCode == 13){
     setHash()
@@ -176,7 +177,7 @@ function loadPublicUserForm(){
                     });
     
     
-            reset();
+            reset(getHash, 'http://youngbin.tk/resumeutil/review.html#'+getHash(), getHash());
 }
 
 function getHash() {
