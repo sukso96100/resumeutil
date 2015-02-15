@@ -176,8 +176,8 @@ function loadPublicUserForm(){
                         }
                     });
     
-    
-            loadDisqus(userName);
+     loadDisqus(userName);
+           
 }
 
 function getHash() {
@@ -191,7 +191,8 @@ function getHash() {
 function loadDisqus(username){
 /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
         var disqus_shortname = 'resumeutil'; // required: replace example with your forum shortname
-    var disqus_identifier = username;
+    var disqus_identifier = window.location.href;
+    var disqus_url = window.location.href;
 
         /* * * DON'T EDIT BELOW THIS LINE * * */
         (function() {
