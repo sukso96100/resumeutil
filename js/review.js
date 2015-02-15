@@ -193,6 +193,7 @@ function loadDisqus(username){
         var disqus_shortname = 'resumeutil'; // required: replace example with your forum shortname
     var disqus_identifier = window.location.href;
     var disqus_url = window.location.href;
+    var disqus_title = username;
 
         /* * * DON'T EDIT BELOW THIS LINE * * */
         (function() {
