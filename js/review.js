@@ -136,7 +136,7 @@ function loadPublicUserForm(){
     
     console.log(userName)
     console.log("Loading Data")
-           
+           loadDisqus(userName);
              showToast("불러오는 중");
             var UserIntroData = Parse.Object.extend("UserIntroData");
             var query = new Parse.Query(UserIntroData);
@@ -176,7 +176,7 @@ function loadPublicUserForm(){
                         }
                     });
     
-     loadDisqus(userName);
+     
            
 }
 
