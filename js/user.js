@@ -59,15 +59,20 @@ function newUserTask(){
         user.set("password", newpassword);
         user.set("email", newemail);
         //user.set("emailVerified", false);
-        var roleACL = new Parse.ACL();
-        roleACL.setPublicReadAccess(true);
-        var role = new Parse.Role(newusername, roleACL);
-        role.save();
+        
         
         user.signUp(null, {
             success: function(user) {
                 // Hooray! Let them use the app now.
                 showToast("가입해 주셔서 감사합니다. 가입 완료를 위해, 인증 메일을 확인해주세요.");
+                
+                var roleACL = new Parse.ACL();
+        roleACL.setPublicReadAccess(true);
+        roleACL.setReadAccess(user, true);
+        roleACL.setWriteAccess(user, true);
+        var role = new Parse.Role(newusername, roleACL);
+        role.save();
+                
                 var UserIntroData = Parse.Object.extend("UserIntroData");
          var userIntroData = new UserIntroData();
          var userIntroACL = new Parse.ACL(newusername);

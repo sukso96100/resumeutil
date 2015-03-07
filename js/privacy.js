@@ -111,36 +111,58 @@ function setPublicToggleState(){
             }
         }
 
-//function showAllowed(){
-//    
-//            //Find Existing Data First
-//            var UserIntroData = Parse.Object.extend("UserIntroData");
-//            var query = new Parse.Query(UserIntroData);
-//            query.equalTo("username", CurrentUserVar.getUsername());
-//            query.first({
-//                success: function(object) {
-//                    var ACL = object.getACL()
-//                    
-//                },
-//                error: function(error) {
-//                        }
-//                    });
-//}
-//
-//function allowNewPerson(){
-//    
-//            //Find Existing Data First
-//            var UserIntroData = Parse.Object.extend("UserIntroData");
-//            var query = new Parse.Query(UserIntroData);
-//            query.equalTo("username", CurrentUserVar.getUsername());
-//            query.first({
-//                success: function(object) {
-//                    
-//                },
-//                error: function(error) {
-//                        }
-//                    });
-//}
-//
+function showAllowed(){
+    
+            //Find Existing Data First
+            var query = new Parse.Query(Parse.Role);
+            query.equalTo("name", CurrentUserVar.getUsername());
+            query.first({
+                success: function(object) {
+                    var allowedUsers = object.getUsers()
+                    console.log(allowedUsers.toString())
+                    console.log(allowedUsers)
+                    allowedUsers.query()
+                                  .find()
+                                  .then(function(users) {
+
+                                    // users = Array <Parse.User>
+                                        console.log(users.toString())                                        
+                                        console.log(users)
+
+                                  });
+                },
+                error: function(error) {
+                    console.log("ERROR")
+                        }
+                    });
+}
+
+function allowWithEnterKey(){
+    if (event.keyCode == 13){
+        allowNewPerson()}
+}
+
+function allowNewPerson(){
+        //Find Existing Data First
+            var query = new Parse.Query(Parse.Role);
+            query.equalTo("name", CurrentUserVar.getUsername());
+            query.first({
+                success: function(object) {
+                    var allowedUsers = object.getUsers()
+                    console.log(allowedUsers)
+                    allowedUsers.query()
+                                  .find()
+                                  .then(function(users) {
+
+                                    // users = Array <Parse.User>
+                                        console.log(users)
+                                  });
+                },
+                error: function(error) {
+                    console.log("ERROR")
+                        }
+                    });
+}
+
 //function removeAllowed(){
 //}
