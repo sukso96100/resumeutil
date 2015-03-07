@@ -1,0 +1,23 @@
+{
+  "name": "resumeutil",
+  "version": "1.0.0",
+  "description": "univ-self-intro-form ====================",
+  "main": "js/index.js",
+  "dependencies": {
+    "grunt": "^0.4.5"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sukso96100/resumeutil.git"
+  },
+  "author": "Youngbin Han <sukso96100@gmail.com>",
+  "license": "GPL V3",
+  "bugs": {
+    "url": "https://github.com/sukso96100/resumeutil/issues"
+  },
+  "homepage": "https://github.com/sukso96100/resumeutil"
+}

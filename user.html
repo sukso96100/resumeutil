@@ -20,6 +20,7 @@
         <script src="js/user.js"></script>
         <script src="js/toast.js"></script>
         <script src="js/review.js"></script>
+        <script src="js/privacy.js"></script>
         
 <!--        HTML Imports-->
         <link rel="import" href="bower_components/core-header-panel/core-header-panel.html">
@@ -31,6 +32,8 @@
         <link rel="import" href="bower_components/paper-input/paper-input-decorator.html">
         <link rel="import" href="bower_components/paper-toast/paper-toast.html">
         <link rel="import" href="bower_components/paper-toggle-button/paper-toggle-button.html">
+        <link rel="import" href="bower_components/paper-fab/paper-fab.html">
+
 
         
         <!--       Stylesheet-->
@@ -72,6 +75,13 @@
                
                <div flex>공개적으로 첨삭받기(누구든 읽기 및 댓글추가 가능)</div><br>
                    <paper-toggle-button id="public-toggle" onchange="setPublic()"></paper-toggle-button>
+               <br><br>
+               
+               <div flex>내 양식을 볼 수 있는 사람들</div>
+               <paper-input-decorator label="볼 수 있는 사람 추가하기">
+               <input type="text">
+               </paper-input-decorator>
+               <paper-fab mini icon="add" id="addwatcher"></paper-fab>
                </paper-shadow><br>
            <paper-shadow z="1" class="usercard">
                <core-icon icon="find-replace"></core-icon>
