@@ -66,29 +66,7 @@ function newUserTask(){
                 // Hooray! Let them use the app now.
                 showToast("가입해 주셔서 감사합니다. 가입 완료를 위해, 인증 메일을 확인해주세요.");
                 
-                var roleACL = new Parse.ACL();
-        roleACL.setPublicReadAccess(true);
-        roleACL.setReadAccess(user, true);
-        roleACL.setWriteAccess(user, true);
-        var role = new Parse.Role(newusername, roleACL);
-        role.save();
-                
-                var UserIntroData = Parse.Object.extend("UserIntroData");
-         var userIntroData = new UserIntroData();
-         var userIntroACL = new Parse.ACL(newusername);
-         userIntroACL.setRoleReadAccess(role, true);
-         userIntroACL.setReadAccess(user, true);
-         userIntroACL.setWriteAccess(user, true);
-         userIntroData.set("username", user.getUsername());
-         userIntroData.setACL(userIntroACL);
-         userIntroData.save(null, {
-             success: function(userIntroData) {  
-//                 showToast("설정 저장 완료");
-                 },
-             error: function(userIntroData, error) {
-//                 showToast("설정 저장 오류 발생");
-                   }
-                 });
+              
                 },
             error: function(user, error) {
                 // Show the error message somewhere and let the user try again.

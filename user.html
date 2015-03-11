@@ -33,6 +33,8 @@
         <link rel="import" href="bower_components/paper-toast/paper-toast.html">
         <link rel="import" href="bower_components/paper-toggle-button/paper-toggle-button.html">
         <link rel="import" href="bower_components/paper-fab/paper-fab.html">
+        <link rel="import" href="bower_components/core-menu/core-menu.html">
+        <link rel="import" href="bower_components/paper-item/paper-item.html">
 
 
         
@@ -77,13 +79,16 @@
                    <paper-toggle-button id="public-toggle" onchange="setPublic()"></paper-toggle-button>
                <br><br>
                
-<!--
-               <div flex>내 양식을 볼 수 있는 사람들</div>
+               <div flex>내 양식을 볼 수 있는 사람들(제거하려면 해당 항목 클릭)</div>
+               <core-menu id="watchers">
+                    <paper-item>Cut</paper-item>
+                    <paper-item>Copy</paper-item>
+                    <paper-item>Paste</paper-item>
+                </core-menu>
                <paper-input-decorator label="볼 수 있는 사람 추가하기">
-               <input type="text" id="newwatcher">
+               <input type="text" id="newwatcher" onkeypress="allowWithEnterKey()">
                </paper-input-decorator>
                <paper-fab mini icon="add" id="addwatcher" onclick="allowNewPerson()"></paper-fab>
--->
                </paper-shadow><br>
            <paper-shadow z="1" class="usercard">
                <core-icon icon="find-replace"></core-icon>

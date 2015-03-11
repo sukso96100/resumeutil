@@ -112,27 +112,20 @@ function setPublicToggleState(){
         }
 
 function showAllowed(){
-    
-            //Find Existing Data First
-            var query = new Parse.Query(Parse.Role);
-            query.equalTo("name", CurrentUserVar.getUsername());
+   var UserIntroData = Parse.Object.extend("UserIntroData");
+            var query = new Parse.Query(UserIntroData);
+            query.equalTo("username", CurrentUserVar.getUsername());
             query.first({
-                success: function(object) {
-                    var allowedUsers = object.getUsers()
-                    console.log(allowedUsers.toString())
-                    console.log(allowedUsers)
-                    allowedUsers.query()
-                                  .find()
-                                  .then(function(users) {
-
-                                    // users = Array <Parse.User>
-                                        console.log(users.toString())                                        
-                                        console.log(users)
-
-                                  });
+                success: function(results) {
+                    //Load Data
+                    var Acl = results.getACL();
+                    var JsonAcl = Acl.toJSON();
+                    console.log(JsonAcl);
+                     
                 },
                 error: function(error) {
-                    console.log("ERROR")
+                    //Data Not Exist
+//                     document.getElementById('statemsg').innerHTML = "";
                         }
                     });
 }
@@ -143,26 +136,81 @@ function allowWithEnterKey(){
 }
 
 function allowNewPerson(){
-        //Find Existing Data First
-            var query = new Parse.Query(Parse.Role);
-            query.equalTo("name", CurrentUserVar.getUsername());
+        var newwatcher = document.getElementById("newwatcher").value;
+        var newwatcherobj 
+         var query = new Parse.Query(Parse.User);
+            query.equalTo("username", newwatcher);
             query.first({
                 success: function(object) {
-                    var allowedUsers = object.getUsers()
-                    console.log(allowedUsers)
-                    allowedUsers.query()
-                                  .find()
-                                  .then(function(users) {
-
-                                    // users = Array <Parse.User>
-                                        console.log(users)
-                                  });
+                    if(object==undefined){
+                        showToast("추가 하고자 하시는 사용자는 존재하지 않습니다.:"+newwatcher);
+                    }
+                    console.log("GOT IT:"+object.id);
+                    newwatcherobj = object.id;
+                    
+                      var UserIntroData = Parse.Object.extend("UserIntroData");
+                        var query = new Parse.Query(UserIntroData);
+                        query.equalTo("username", CurrentUserVar.getUsername());
+                        query.first({
+                            success: function(results) {
+                                console.log("GOT IT");
+                                var currentacl = results.getACL();
+                                currentacl.setReadAccess(newwatcherobj, true);
+                                results.setACL(currentacl);
+                                results.save({
+                success: function(object) {
+                    console.log("New Watcher Added");
+                    showToast("이제, "+newwatcher+"님 께서 회원님의 양식을 보실 수 있습니다.");
                 },
                 error: function(error) {
-                    console.log("ERROR")
+                    console.log("ERROR");
+                        }
+                    });
+                                
+                            },
+                            error: function(error) {
+                                    }
+                                });
+                },
+                error: function(error) {
                         }
                     });
 }
 
-//function removeAllowed(){
-//}
+function unallowPerson(watcher){
+        var watcherobj 
+         var query = new Parse.Query(Parse.User);
+            query.equalTo("username", watcher);
+            query.first({
+                success: function(object) {
+                    console.log("GOT IT:"+object.id);
+                    watcherobj = object.id;
+                    
+                      var UserIntroData = Parse.Object.extend("UserIntroData");
+                        var query = new Parse.Query(UserIntroData);
+                        query.equalTo("username", CurrentUserVar.getUsername());
+                        query.first({
+                            success: function(results) {
+                                console.log("GOT IT");
+                                var currentacl = results.getACL();
+                                currentacl.setReadAccess(watcherobj, false);
+                                results.setACL(currentacl);
+                                results.save({
+                success: function(object) {
+                    console.log("New Watcher Added");
+                    showToast("지금부터는, "+watcher+"님 께서 회원님의 양식을 보실 수 없습니다.");
+                },
+                error: function(error) {
+                    console.log("ERROR");
+                        }
+                    });
+                                
+                            },
+                            error: function(error) {
+                                    }
+                                });
+                },
+                error: function(error) {
+                        }
+                    });
+}
