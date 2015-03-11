@@ -51,9 +51,9 @@ function loadPublicUserForm(){
                     contentarea.innerHTML = line;
                      showToast(userName+" 님의 양식을 불러왔습니다.")
                     }catch(e){
-                    showToast("해당 사용자의 양식이 비공개 이거나, 존재하지 않는 사용자 입니다.")
+                    showToast("해당 사용자의 양식을 볼 권한이 없거나, 존재하지 않는 사용자 입니다.")
                      var contentarea = document.getElementById("content");
-                    contentarea.innerHTML = "해당 사용자의 양식이 비공개 이거나, 존재하지 않는 사용자 입니다.";
+                    contentarea.innerHTML = "해당 사용자의 양식을 볼 권한이 없거나, 존재하지 않는 사용자 입니다.";
                     }
                     
                      
