@@ -43,6 +43,7 @@ function loginCheckUserpage(){
       location.href="login.html"
   }else{
   showUserInfo()
+  showAllowed()
   }
 }
 

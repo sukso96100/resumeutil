@@ -1,7 +1,7 @@
 function setPublicToggleState(){
     var toggle = document.getElementById("public-toggle");
     var reviewEnabled = false;
-    var userIntroACL = new Parse.ACL(Parse.User.current());
+    var userIntroACL;
     
             console.log("Setting Public Toggle Button")
             if(CurrentUserVar==null){
@@ -11,6 +11,7 @@ function setPublicToggleState(){
             query.equalTo("username", CurrentUserVar.getUsername());
             query.first({
                 success: function(results) {
+                    userIntroACL = results.getACL;
                     //set Radio Toggle State
                     reviewEnabled = results.get("reviewEnabled");
                     if(reviewEnabled==true){
@@ -46,7 +47,7 @@ function setPublicToggleState(){
   }
     
     
-            var userIntroACL = new Parse.ACL(Parse.User.current());
+            var userIntroACL;
             console.log("Toggle State:"+PublicBoolean);
             console.log("saving...")
             if(CurrentUserVar==null){
@@ -60,6 +61,7 @@ function setPublicToggleState(){
             query.equalTo("username", CurrentUserVar.getUsername());
             query.first({
                 success: function(object) {
+                    userIntroACL = object.getACL();
                     //Update Existing Data
                     if(object==null){
                     console.log("No Data Found");
@@ -110,7 +112,7 @@ function setPublicToggleState(){
                     });
             }
         }
-
+var JSONACL;
 function showAllowed(){
    var UserIntroData = Parse.Object.extend("UserIntroData");
             var query = new Parse.Query(UserIntroData);
@@ -120,7 +122,30 @@ function showAllowed(){
                     //Load Data
                     var Acl = results.getACL();
                     var JsonAcl = Acl.toJSON();
+                    JSONACL = JsonAcl;
                     console.log(JsonAcl);
+                    document.getElementById("watchers").innerHTML = "";
+                    for(var key in JsonAcl){
+                        console.log(key, JsonAcl[key]);
+                        if(key == CurrentUserVar.id){
+                            console.log("skip adding to the list:"+key);
+                        }else{
+                            console.log("adding to the list:"+key);
+                            var username;
+                            var query = new Parse.Query(Parse.User);
+            query.equalTo("objectId", key);
+            query.first({
+                success: function(object) {
+                   username = object.get("username");
+                   console.log(username)
+                   var item = '<paper-item onclick="unallowPerson(this)" id="'+username+'">'+username+'</paper-item>';
+                    $('#watchers').append(item);
+                },
+                error: function(error) {
+                        }
+                    });
+                        }
+                    }
                      
                 },
                 error: function(error) {
@@ -161,6 +186,7 @@ function allowNewPerson(){
                 success: function(object) {
                     console.log("New Watcher Added");
                     showToast("이제, "+newwatcher+"님 께서 회원님의 양식을 보실 수 있습니다.");
+                    showAllowed();
                 },
                 error: function(error) {
                     console.log("ERROR");
@@ -177,7 +203,8 @@ function allowNewPerson(){
                     });
 }
 
-function unallowPerson(watcher){
+function unallowPerson(element){
+        var watcher = element.id;
         var watcherobj 
          var query = new Parse.Query(Parse.User);
             query.equalTo("username", watcher);
@@ -199,6 +226,7 @@ function unallowPerson(watcher){
                 success: function(object) {
                     console.log("New Watcher Added");
                     showToast("지금부터는, "+watcher+"님 께서 회원님의 양식을 보실 수 없습니다.");
+                    showAllowed();
                 },
                 error: function(error) {
                     console.log("ERROR");
