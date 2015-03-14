@@ -7,6 +7,7 @@ if (event.keyCode == 13){
 
 function setHash(){
 window.location.hash="!"+document.getElementById("usernameinput").value;
+    USERNAME4COMMENTS = getHash();
     }
 
 document.addEventListener('polymer-ready', function() {
@@ -26,7 +27,6 @@ function loadPublicUserForm(){
     
     console.log(userName)
     console.log("Loading Data")
-           changeThread(userName)
              showToast("불러오는 중");
             var UserIntroData = Parse.Object.extend("UserIntroData");
             var query = new Parse.Query(UserIntroData);
@@ -67,7 +67,7 @@ function loadPublicUserForm(){
                     });
     
      
-           
+           loadComments()
 }
 
 function getHash() {

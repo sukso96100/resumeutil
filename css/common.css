@@ -10,7 +10,7 @@ body{
 }
 
 .content-area{
-    margin: 32px;
+    margin: 16px;
 }
 
 select, option {
@@ -30,4 +30,9 @@ select, option {
    so menu button isn't required */
 core-drawer-panel:not([narrow]) #navicon {
   display: none;
+}
+
+.comment{
+    padding: 16px;
+    background-color: #d9d9d9;
 }

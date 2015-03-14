@@ -23,6 +23,7 @@
         <script src="js/user.js"></script>
         <script src="js/form.js"></script>
         <script src="js/toast.js"></script>
+        <script src="js/comments.js"></script>
         
 <!--        HTML Imports-->
         <link rel="import" href="bower_components/core-header-panel/core-header-panel.html">
@@ -34,6 +35,9 @@
         <link rel="import" href="bower_components/core-drawer-panel/core-drawer-panel.html">
         <link rel="import" href="bower_components/paper-toast/paper-toast.html">
         <link rel="import" href="elements/drawer-content.html">
+                <link rel="import" href="bower_components/core-collapse/core-collapse.html">
+        <link rel="import" href="bower_components/core-splitter/core-splitter.html">
+
 <!--       Stylesheet-->
         <link rel="stylesheet" href="css/common.css">
          <!--Legacy Browser Check-->
@@ -56,16 +60,22 @@
             <core-header-panel flex drawer style="background: white;">
                 <drawer-content></drawer-content>
               </core-header-panel>
+                
+               
+
             <core-header-panel flex main>
+
                 <core-toolbar>
                     <paper-icon-button id="navicon" icon="menu" ></paper-icon-button>
-                  <div>ResumeUtil</div>
+                  <span flex>ResumeUtil</span>
                 </core-toolbar>
-                <div class="content-area">
-                    <div class="g-plusone" data-href="https://www.youngbin.tk/resumeutil"></div>
-         <div class="fb-like" data-href="https://www.youngbin.tk/resumeutil" data-layout="button_count" data-action="like" data-show-faces="false" data-share="false"></div>
+                <div class="content-area" layout horizontal>
+                    <div>
+                     <div class="g-plusone" data-href="https://www.youngbin.tk/resumeutil"></div>
+         <div class="fb-like" data-href="https://www.youngbin.tk/resumeutil" data-layout="button_count" data-action="like" data-show-faces="false" data-share="false"></div><br>
                     <!--        Contents-->
                     <div id="printArea"><br><br>    
+                       
                         <paper-shadow z="1" class="largecard">
                             <p id="updatedAt"></p>
                             <h2>2015학년도 학생부 전형 자기소개서 공통양식</h2>
@@ -112,10 +122,32 @@
                             <br>
                             </paper-shadow>
                 </div>
+                    </div>
+                    
+                    <core-splitter direction="left" minsize="60%"></core-splitter>
+                      <div flex class="comment">
+                       <core-menu id="comments">
+                </core-menu>
+                      <paper-input-decorator label="의견 입력">
+                  <input type="text" id="comment-input" onkeypress="updateComments()">
+                </paper-input-decorator>
+                <paper-button raised onclick="loadComments()">
+                  <core-icon icon="add-circle"></core-icon>의견 추가
+                </paper-button><br>
+                      
+               
+               
+              </div>
                 </div>
+                 
             </core-header-panel>
+                
         </core-drawer-panel>
+       
         <paper-toast id="toast"></paper-toast>
+        
+        
+        
         <!--        Google Plus One Button-->
         <!-- 이 태그를 head 태그에 배치하거나 닫는 body 태그 바로 앞에 배치하세요. -->
         <script src="https://apis.google.com/js/platform.js" async defer>
@@ -131,5 +163,7 @@
           js.src = "//connect.facebook.net/ko_KR/sdk.js#xfbml=1&version=v2.0";
           fjs.parentNode.insertBefore(js, fjs);
         }(document, 'script', 'facebook-jssdk'));</script>
+        
+              
     </body>
 </html>

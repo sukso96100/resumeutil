@@ -130,6 +130,7 @@ function setQ4(){
 
         //저장된 양식 불러오기 함수
         function loadFormData(){
+            USERNAME4COMMENTS = CurrentUserVar.getUsername();
             console.log("Loading Data")
             if(CurrentUserVar==null){
             }else{
@@ -158,6 +159,7 @@ function setQ4(){
                         }
                     });
             }
+            loadComments()
         }
 
 //글자수 카운터
