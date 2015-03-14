@@ -61,12 +61,16 @@ function newUserTask(){
         user.set("email", newemail);
         //user.set("emailVerified", false);
         
-        
         user.signUp(null, {
             success: function(user) {
                 // Hooray! Let them use the app now.
                 showToast("가입해 주셔서 감사합니다. 가입 완료를 위해, 인증 메일을 확인해주세요.");
-                
+                var UserACL = new Parse.ACL(Parse.User.current());
+                UserACL.setReadAccess(user, true);
+                UserACL.setWriteAccess(user, true)
+                UserACL.setPublicReadAccess(true);
+                user.setACL(UserACL);
+                user.save();
               
                 },
             error: function(user, error) {
