@@ -168,7 +168,7 @@ userAgain.save(null, {
   
        
  //사용자 이메일 변경 함수
-        function changeEmailTask(){
+function changeEmailTask(){
 var newemail = document.getElementById("newemail").value;
 var newemailcheck = document.getElementById("newemailcheck").value;
 
