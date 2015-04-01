@@ -4,3 +4,7 @@ function showToast(textmsg) {
     toast.setAttribute("text", textmsg);
     toast.show();
   }
+
+function href(target){
+    location.href = target.toString()
+}

@@ -17,7 +17,7 @@
 <!--        Parse JS SDK-->
         <script src="https://www.parsecdn.com/js/parse-1.3.5.min.js"></script>
         <script src="js/initparse.js"></script>
-        <script src="js/user.js"></script>
+        <script src="js/util.js"></script>
         <script src="js/toast.js"></script>
         
 <!--        HTML Imports-->
@@ -51,7 +51,7 @@
           <core-header-panel flex>
            
   <core-toolbar>
-      <a href="index.html"><paper-icon-button icon="arrow-back"></paper-icon-button></a>
+      <paper-icon-button icon="arrow-back" onclick="href('index.html')"></paper-icon-button>
       <div>로그인</div>
            </core-toolbar>
   <div align="center" class="content-area">

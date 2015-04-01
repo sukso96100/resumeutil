@@ -199,3 +199,26 @@ userAgain.save(null, {
    }
         
         }
+
+//function emailVerficationTask(){
+// CurrentUserVar.set("email", CurrentUserVar.getEmail);  // attempt to change username
+//    CurrentUserVar.save(null, {
+//      success: function(user) {
+//        // This succeeds, since the user was authenticated on the device
+//          showToast("이메일 인증 메일 전송됨");
+//          
+//          // Get the user from a non-authenticated method
+//        var query = new Parse.Query(Parse.User);
+//        query.get(user.objectId, {
+//          success: function(userAgain) {
+//userAgain.set("username", "another_username");
+//userAgain.save(null, {
+//  error: function(userAgain, error) {
+//   showToast("사용자 인증 오류.");
+//  }
+//});
+//          }
+//        });
+//      }
+//    });
+//}

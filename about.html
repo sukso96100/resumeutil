@@ -36,6 +36,8 @@
         try {document.addEventListener("DOMContentLoaded", $buo_f,false)}
         catch(e){window.attachEvent("onload", $buo_f)}
         </script> 
+        
+        <script src="js/util.js"></script>
 <!--        Title-->
         <title>ResumeUtil</title>
         
@@ -44,7 +46,7 @@
        <core-header-panel flex>
            
   <core-toolbar>
-      <a href="index.html"><paper-icon-button icon="arrow-back"></paper-icon-button></a>
+      <paper-icon-button icon="arrow-back" onclick="href('index.html')"></paper-icon-button>
       <div>ResumeUtil 에 대해</div>
            </core-toolbar>
   <div align="center" class="content-area">
