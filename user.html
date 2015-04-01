@@ -90,6 +90,21 @@
                </paper-input-decorator>
                <paper-fab mini icon="add" id="addwatcher" onclick="allowNewPerson()"></paper-fab>
                </paper-shadow><br>
+      
+        <paper-shadow z="1" class="usercard">
+               <core-icon icon="find-replace"></core-icon>
+                <h1>이메일 변경</h1>
+                <paper-input-decorator label="새로 사용할 이메일 입력">
+                    <input id="newemail" type="text">
+                </paper-input-decorator>
+               <paper-input-decorator label="이메일 확인">
+                    <input id="newemailcheck" type="text" onkeypress="doWithEnterKey(4)">
+                </paper-input-decorator>
+               
+               <paper-button raised style="background: green; color:white;" change="changeEmailTask()">
+               <core-icon icon="find-replace"></core-icon>이메일 변경하기</paper-button>
+            </paper-shadow><br>
+      
            <paper-shadow z="1" class="usercard">
                <core-icon icon="find-replace"></core-icon>
                 <h1>비밀번호 변경</h1>

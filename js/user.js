@@ -13,6 +13,9 @@ if (event.keyCode == 13){
         case 3:
             changePasswordTask()
             break;
+        case 4:
+            changeEmailTask()
+            break;
         default:
     }
         }
@@ -164,3 +167,35 @@ userAgain.save(null, {
         }
   
        
+ //사용자 이메일 변경 함수
+        function changeEmailTask(){
+var newemail = document.getElementById("newemail").value;
+var newemailcheck = document.getElementById("newemailcheck").value;
+
+if(newemail==newemailcheck){
+   
+    CurrentUserVar.set("email", newemail);  // attempt to change username
+    CurrentUserVar.save(null, {
+      success: function(user) {
+        // This succeeds, since the user was authenticated on the device
+          showToast("이메일 변경이 성공적으로 이뤄졌습니다.");
+          
+          // Get the user from a non-authenticated method
+        var query = new Parse.Query(Parse.User);
+        query.get(user.objectId, {
+          success: function(userAgain) {
+userAgain.set("username", "another_username");
+userAgain.save(null, {
+  error: function(userAgain, error) {
+   showToast("사용자 인증 오류.");
+  }
+});
+          }
+        });
+      }
+    });
+    }else{
+        showToast("새 이메일 입력란과 확인란에 입력한 이메일이 다릅니다.");
+   }
+        
+        }
