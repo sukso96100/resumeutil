@@ -36,10 +36,8 @@
         <link rel="import" href="bower_components/paper-input/paper-input-decorator.html">
         <link rel="import" href="bower_components/paper-toast/paper-toast.html">
         <link rel="import" href="bower_components/paper-radio-button/paper-radio-button.html">
-        <link rel="import" href="bower_components/core-collapse/core-collapse.html">
         <link rel="import" href="bower_components/core-menu/core-menu.html">
-        <link rel="import" href="bower_components/core-splitter/core-splitter.html">
-        <link rel="import" href="bower_components/core-scroll-header-panel/core-scroll-header-panel.html">
+        <link rel="import" href="bower_components/core-drawer-panel/core-drawer-panel.html">
 
         
         <!--       Stylesheet-->
@@ -62,14 +60,33 @@
     <body onhashchange="loadPublicUserForm()" onload="loadPublicUserForm()" fullbleed layout vertical>
       
 
-        
-              <core-scroll-header-panel flex>
-           
+        <core-drawer-panel id="reviewPanel" rightDrawer>
+            <core-header-panel flex drawer class="comment">
+                 <div flex class="comment">
+                       <core-menu id="comments">
+                </core-menu>
+                      <paper-input-decorator label="의견 입력">
+                  <input type="text" id="comment-input" onkeypress="updateComments()">
+                </paper-input-decorator>
+                <paper-button raised onclick="loadComments()">
+                  <core-icon icon="add-circle"></core-icon>의견 추가
+                </paper-button><br>
+                      
+               
+               
+              </div>
+              </core-header-panel>
+                
+               
+            
+            <core-header-panel flex main>
+                    
   <core-toolbar>
       <paper-icon-button icon="arrow-back" onclick="href('index.html')"></paper-icon-button>
        <span flex>첨삭하기</span>
+      <paper-icon-button id="reviewicon" icon="question-answer" ></paper-icon-button>
            </core-toolbar>
-  <div align="center" class="content-area" layout horizontal>
+  <div align="center" class="content-area">
            
       <div>
            <paper-shadow z="1" class="largecard">
@@ -85,23 +102,11 @@
             </paper-shadow><br>
       
      </div>
-      <core-splitter direction="left" minsize="60%"></core-splitter>
-              <div flex class="comment">
-                       <core-menu id="comments">
-                </core-menu>
-                      <paper-input-decorator label="의견 입력">
-                  <input type="text" id="comment-input" onkeypress="updateComments()">
-                </paper-input-decorator>
-                <paper-button raised onclick="loadComments()">
-                  <core-icon icon="add-circle"></core-icon>의견 추가
-                </paper-button><br>
-                      
-               
-               
-              </div>
+             
         </div>
-        </core-scroll-header-panel>
-              
+            </core-header-panel>
+                
+        </core-drawer-panel>
         <paper-toast id="toast"></paper-toast>
     </body>
 </html>

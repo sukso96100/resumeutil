@@ -1,3 +1,15 @@
+document.addEventListener('polymer-ready', function() {
+  var reviewicon = document.getElementById('reviewicon');
+  var reviewPanel = document.getElementById('reviewPanel');
+    reviewicon.addEventListener('click', function() {
+    reviewPanel.togglePanel();
+  });
+  
+  if(CurrentUserVar!=null){
+    loadFormData()
+    document.getElementById("usernameitem").setAttribute("label",CurrentUserVar.getUsername());
+        }
+});
 
 function setHashWithEnterKey(event){
 if (event.keyCode == 13){
