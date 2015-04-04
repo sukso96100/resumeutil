@@ -211,7 +211,7 @@ function textCounter(field,withspace) {
             objWin.document.write("ResumeUtil - 대학입시 자기소개서 작성 연습도구 - https://youngbin.tk/resumeutil");
             objWin.document.write("</p>");
             objWin.document.write("<h1>");
-            objWin.document.write("2015학년도 학생부 전형 자기소개서 공통양식");
+            objWin.document.write("학생부 종합전형 자기소개서 공통양식");
             objWin.document.write("</h1>");
 	    objWin.document.write("<h3>");
 	    objWin.document.write("1. 고등학교 재학기간 중 학업에 기울인 노력과 학습 경험에 대해, 배우고 느낀 점을 중심으로 기술해 주시기 바랍니다(1,000자 이내).");
