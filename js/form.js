@@ -66,7 +66,7 @@ function setQ4(){
             query.first({
                 success: function(object) {
                     //Update Existing Data
-                    if(object==null){
+                    if(object==undefined){
                     console.log("No Data Found");
                          //Data Not Exist, Create New One
                     var userIntroData = new UserIntroData();
@@ -76,7 +76,11 @@ function setQ4(){
                     userIntroData.set("q3",q3data);
                     userIntroData.set("q4",q4data);
                     userIntroData.set("q4qinput",q4qinputdata);
-                    
+                    userIntroData.set("reviewEnabled",false);
+                    var userIntroACL = new Parse.ACL(Parse.User.current())
+                    userIntroACL.setReadAccess(CurrentUserVar, true);
+                    userIntroACL.setWriteAccess(CurrentUserVar, true);
+                    userIntroData.setACL(userIntroACL);
                     userIntroData.save(null, {
                         success: function(userIntroData) {  
                             showToast("저장 완료");
@@ -113,7 +117,11 @@ function setQ4(){
                     userIntroData.set("q3",q3data);
                     userIntroData.set("q4",q4data);
                     userIntroData.set("q4qinput",q4qinutdata);
-                    
+                    userIntroData.set("reviewEnabled",false);
+                    var userIntroACL = new Parse.ACL(Parse.User.current())
+                    userIntroACL.setReadAccess(CurrentUserVar, true);
+                    userIntroACL.setWriteAccess(CurrentUserVar, true);
+                    userIntroData.setACL(userIntroACL);
                     userIntroData.save(null, {
                         success: function(userIntroData) {  
                             showToast("저장 완료");
