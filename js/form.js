@@ -1,8 +1,13 @@
 document.addEventListener('polymer-ready', function() {
   var navicon = document.getElementById('navicon');
   var drawerPanel = document.getElementById('drawerPanel');
+  var reviewicon = document.getElementById('reviewicon');
+  var reviewPanel = document.getElementById('reviewPanel');
   navicon.addEventListener('click', function() {
     drawerPanel.togglePanel();
+  });
+    reviewicon.addEventListener('click', function() {
+    reviewPanel.togglePanel();
   });
   
   if(CurrentUserVar!=null){
