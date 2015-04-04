@@ -44,9 +44,7 @@ function setPublicToggleState(){
   } else {
     // do something if not checked
       PublicBoolean = false;
-  }
-    
-    
+        }
             var userIntroACL;
             console.log("Toggle State:"+PublicBoolean);
             console.log("saving...")
@@ -61,9 +59,10 @@ function setPublicToggleState(){
             query.equalTo("username", CurrentUserVar.getUsername());
             query.first({
                 success: function(object) {
-                    userIntroACL = object.getACL();
+                    
                     //Update Existing Data
                     if(object==null){
+                    userIntroACL = userIntroACL = new Parse.ACL(Parse.User.current())
                     console.log("No Data Found");
                          //Data Not Exist, Create New One
                     var userIntroData = new UserIntroData();
@@ -80,6 +79,7 @@ function setPublicToggleState(){
                               }
                             });
                     }else{
+                        userIntroACL = object.getACL();
                         object.set("reviewEnabled",PublicBoolean);
                         userIntroACL.setPublicReadAccess(PublicBoolean);
                         object.setACL(userIntroACL);
@@ -178,6 +178,9 @@ function allowNewPerson(){
                         query.equalTo("username", CurrentUserVar.getUsername());
                         query.first({
                             success: function(results) {
+                                if(results==undefined){
+                                    showToast("자기소개서 양식 데이터가 없어 권한 설정을 할 수 없습니다.");
+                                }
                                 console.log("GOT IT");
                                 var currentacl = results.getACL();
                                 currentacl.setReadAccess(newwatcherobj, true);
@@ -218,6 +221,9 @@ function unallowPerson(element){
                         query.equalTo("username", CurrentUserVar.getUsername());
                         query.first({
                             success: function(results) {
+                                if(results==undefined){
+                                    showToast("자기소개서 양식 데이터가 없어 권한 설정을 할 수 없습니다.");
+                                }
                                 console.log("GOT IT");
                                 var currentacl = results.getACL();
                                 currentacl.setReadAccess(watcherobj, false);

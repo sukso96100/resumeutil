@@ -148,6 +148,9 @@ function setQ4(){
             query.equalTo("username", CurrentUserVar.getUsername());
             query.first({
                 success: function(results) {
+                    if(results==undefined){
+                        showToast("불러올 데이터가 없습니다.");
+                    }
                     //Load Data
                     document.getElementById('q1').value = results.get("q1");
                     document.getElementById('q2').value = results.get("q2");
