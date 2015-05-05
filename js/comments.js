@@ -39,12 +39,12 @@ function loadComments(){
                         error: function(userIntroData, error) {
                               }
                             });
-                        
-                        document.getElementById("comments").innerHTML="";
                         var DataArray = new Array();
+                        DataArray.push({value : "No Comments"});
+                        var comments = document.querySelector('#my-core-list');
+                        comments.data = DataArray;
                         for(var i=0; i<array.length; i++){
                             DataArray.push({value : array[i]});
-                            var comments = document.querySelector('#my-core-list');
                             comments.data = DataArray;
                         }
                         
