@@ -41,9 +41,11 @@ function loadComments(){
                             });
                         
                         document.getElementById("comments").innerHTML="";
+                        var DataArray = new Array();
                         for(var i=0; i<array.length; i++){
-                            var element = "<p>"+array[i]+"</p><br>";
-                            $('#comments').append(element);
+                            DataArray.push({data : array[i]});
+                            var comments = document.querySelector('#my-core-list');
+                            comments.data = DataArray;
                         }
                         
               },

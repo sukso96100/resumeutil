@@ -38,6 +38,7 @@
         <link rel="import" href="bower_components/core-collapse/core-collapse.html">
         <link rel="import" href="bower_components/core-splitter/core-splitter.html">
         <link rel="import" href="bower_components/paper-dialog/paper-dialog.html">
+        <link rel="import" href="bower_components/core-list/core-list-html">
 
 <!--       Stylesheet-->
         <link rel="stylesheet" href="css/common.css">
@@ -71,22 +72,26 @@
                 <core-drawer-panel id="reviewPanel" rightDrawer>
             <core-header-panel flex drawer class="comment">
                 <div flex class="comment">
-                       <core-menu id="comments">
-                </core-menu>
+                      <template is="auto-binding" id="comments">
+                          <div class="content" flex>
+                            <core-list data="{{data}}" flex height="30">
+                              <template>
+                                <div class="item">
+                                  <span class="from">{{model.value}}</span>
+                                </div>
+                              </template>
+                            </core-list>
+                          </div>
+                        </template>
                       <paper-input-decorator label="의견 입력">
                   <input type="text" id="comment-input" onkeypress="updateComments()">
                 </paper-input-decorator>
                 <paper-button raised onclick="loadComments()">
                   <core-icon icon="add-circle"></core-icon>의견 추가
                 </paper-button><br>
-                      
-               
-               
               </div>
               </core-header-panel>
                 
-               
-            
             <core-header-panel flex main>
 <core-toolbar>
                     <paper-icon-button id="navicon" icon="menu" ></paper-icon-button>

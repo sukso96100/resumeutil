@@ -63,8 +63,17 @@
         <core-drawer-panel id="reviewPanel" rightDrawer>
             <core-header-panel flex drawer class="comment">
                  <div flex class="comment">
-                       <core-menu id="comments">
-                </core-menu>
+                      <template is="auto-binding" id="comments">
+                          <div class="content" flex>
+                            <core-list data="{{data}}" flex height="30">
+                              <template>
+                                <div class="item">
+                                  <span class="from">{{model.value}}</span>
+                                </div>
+                              </template>
+                            </core-list>
+                          </div>
+                        </template>
                       <paper-input-decorator label="의견 입력">
                   <input type="text" id="comment-input" onkeypress="updateComments()">
                 </paper-input-decorator>

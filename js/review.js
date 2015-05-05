@@ -26,11 +26,6 @@ document.addEventListener('polymer-ready', function() {
   setPublicToggleState()
   });
     
-
-
-
-
-
 function loadPublicUserForm(){
     showToast("찾는 중")
     var userName = getHash()
