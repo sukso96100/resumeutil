@@ -40,11 +40,10 @@ function loadComments(){
                               }
                             });
                         var DataArray = new Array();
-                        DataArray.push({"value" : "No Comments"});
-                        var comments = document.querySelector('#comments');
+                        var comments = document.getElementById("comments");
                         comments.data = DataArray;
                         for(var i=0; i<array.length; i++){
-                            DataArray.push({"value" : array[i]});
+                            DataArray.push({value : array[i]});
                             comments.data = DataArray;
                         }
                         
