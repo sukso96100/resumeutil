@@ -43,7 +43,7 @@ function loadComments(){
                         document.getElementById("comments").innerHTML="";
                         var DataArray = new Array();
                         for(var i=0; i<array.length; i++){
-                            DataArray.push({data : array[i]});
+                            DataArray.push({value : array[i]});
                             var comments = document.querySelector('#my-core-list');
                             comments.data = DataArray;
                         }
