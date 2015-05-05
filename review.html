@@ -38,7 +38,6 @@
         <link rel="import" href="bower_components/paper-radio-button/paper-radio-button.html">
         <link rel="import" href="bower_components/core-menu/core-menu.html">
         <link rel="import" href="bower_components/core-drawer-panel/core-drawer-panel.html">
-            <link rel="import" href="bower_components/core-list/core-list-html">
 
         
         <!--       Stylesheet-->
@@ -64,15 +63,7 @@
         <core-drawer-panel id="reviewPanel" rightDrawer>
             <core-header-panel flex drawer class="comment">
                  <div flex class="comment">
-                      <template is="auto-binding" id="comments">
-                          <div class="content" flex>
-                            <core-list data="{{data}}" flex height="30">
-                              <template>
-                                <p>{{model.value}}</p>
-                              </template>
-                            </core-list>
-                          </div>
-                        </template>
+                      <core-menu id="comments"></core-menu>
                       <paper-input-decorator label="의견 입력">
                   <input type="text" id="comment-input" onkeypress="updateComments()">
                 </paper-input-decorator>
