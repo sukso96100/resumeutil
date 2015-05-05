@@ -62,17 +62,15 @@
 
         <core-drawer-panel id="reviewPanel" rightDrawer>
             <core-header-panel flex drawer class="comment">
-                 <div flex class="comment">
                       <core-menu id="comments" class="comment"></core-menu>
+                      <div class="comment">
                       <paper-input-decorator label="의견 입력">
                   <input type="text" id="comment-input" onkeypress="updateComments()">
-                      <div class="comment">
                 </paper-input-decorator>
                 <paper-button raised onclick="loadComments()">
                   <core-icon icon="add-circle"></core-icon>의견 추가
                 </paper-button><br>
                       </div>                      
-              </div>
               </core-header-panel>
                 
                
