@@ -70,11 +70,11 @@
             <core-header-panel flex main>
 
                 <core-drawer-panel id="reviewPanel" rightDrawer>
-            <core-header-panel flex drawer class="comment">
-                <div flex class="comment">
+            <core-header-panel flex drawer class="comment" id="commentpanel">
+<!--                <div flex class="comment">-->
                       <template is="auto-binding" id="comments">
                           <div class="content" flex>
-                            <core-list data="{{data}}" flex height="30">
+                            <core-list data="{{data}}" flex height="30" scrollTarget="{{$.commentpanel.scroller}}">
                               <template>
                                 <p>{{model.value}}</p>
                               </template>
@@ -87,7 +87,7 @@
                 <paper-button raised onclick="loadComments()">
                   <core-icon icon="add-circle"></core-icon>의견 추가
                 </paper-button><br>
-              </div>
+<!--              </div>-->
               </core-header-panel>
                 
             <core-header-panel flex main>
