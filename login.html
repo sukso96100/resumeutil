@@ -60,10 +60,10 @@
         <paper-shadow z="1" class="usercard">
                <core-icon icon="account-circle"></core-icon>
                 <h1>로그인</h1>
-                <paper-input-decorator label="사용자 계정이름(ID) 입력">
+                <paper-input-decorator floatingLabel label="사용자 계정이름(ID) 입력">
                     <input id="username" type="text">
                 </paper-input-decorator>
-                <paper-input-decorator label="비밀번호 입력">
+                <paper-input-decorator floatingLabel label="비밀번호 입력">
                     <input id="password" type="password" onkeypress="doWithEnterKey(0)">
                 </paper-input-decorator>
                
@@ -74,7 +74,7 @@
            <paper-shadow z="1" class="usercard">
                <core-icon icon="error"></core-icon>
                 <h1>비밀번호 찾기</h1>
-                <paper-input-decorator label="가입시 입력한 이메일 주소 입력">
+                <paper-input-decorator floatingLabel label="가입시 입력한 이메일 주소 입력">
                     <input id="passwordreset" type="text" onkeypress="doWithEnterKey(1)">
                 </paper-input-decorator>
                
@@ -85,13 +85,13 @@
            <paper-shadow z="1" class="usercard">
                <core-icon icon="add-circle"></core-icon>
                 <h1>새 계정 만들기</h1>
-                <paper-input-decorator label="사용할 사용자 계정이름(ID) 입력">
+                <paper-input-decorator floatingLabel label="사용할 사용자 계정이름(ID) 입력">
                     <input id="newusername" type="text">
                 </paper-input-decorator>
-               <paper-input-decorator label="비밀번호 입력">
+               <paper-input-decorator floatingLabel label="사용할 비밀번호 입력">
                     <input id="newpassword" type="password">
                 </paper-input-decorator>
-               <paper-input-decorator label="이메일 주소 입력">
+               <paper-input-decorator floatingLabel label="이메일 주소 입력">
                     <input id="newemail" type="text" onkeypress="doWithEnterKey(2)">
                 </paper-input-decorator>
                
