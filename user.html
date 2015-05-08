@@ -85,7 +85,7 @@
                <div flex>내 양식을 볼 수 있는 사람들(제거하려면 해당 항목 클릭)</div>
                <core-menu id="watchers">
                 </core-menu>
-               <paper-input-decorator label="볼 수 있는 사람 추가하기">
+               <paper-input-decorator floatingLabel label="볼 수 있는 사람 추가하기">
                <input type="text" id="newwatcher" onkeypress="allowWithEnterKey()">
                </paper-input-decorator>
                <paper-fab mini icon="add" id="addwatcher" onclick="allowNewPerson()"></paper-fab>
@@ -94,10 +94,10 @@
         <paper-shadow z="1" class="usercard">
                <core-icon icon="find-replace"></core-icon>
                 <h1>이메일 변경</h1>
-                <paper-input-decorator label="새로 사용할 이메일 입력">
+                <paper-input-decorator floatingLabel label="새로 사용할 이메일 입력">
                     <input id="newemail" type="text">
                 </paper-input-decorator>
-               <paper-input-decorator label="이메일 확인">
+               <paper-input-decorator floatingLabel label="이메일 확인">
                     <input id="newemailcheck" type="text" onkeypress="doWithEnterKey(4)">
                 </paper-input-decorator>
                
@@ -108,10 +108,10 @@
            <paper-shadow z="1" class="usercard">
                <core-icon icon="find-replace"></core-icon>
                 <h1>비밀번호 변경</h1>
-                <paper-input-decorator label="새로 사용할 비밀번호 입력">
+                <paper-input-decorator floatingLabel label="새로 사용할 비밀번호 입력">
                     <input id="newpass" type="password">
                 </paper-input-decorator>
-               <paper-input-decorator label="비밀번호 확인">
+               <paper-input-decorator floatingLabel label="비밀번호 확인">
                     <input id="newpasscheck" type="password" onkeypress="doWithEnterKey(3)">
                 </paper-input-decorator>
                
