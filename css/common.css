@@ -36,3 +36,7 @@ core-drawer-panel:not([narrow]) #navicon{
     padding: 16px;
     background-color: #d9d9d9;
 }
+
+paper-input-decorator{
+    text-align: center;
+}
