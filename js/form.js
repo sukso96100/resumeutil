@@ -1,4 +1,5 @@
 document.addEventListener('polymer-ready', function() {
+    CurrentUserVar.fetch()
   var navicon = document.getElementById('navicon');
   var drawerPanel = document.getElementById('drawerPanel');
   var reviewicon = document.getElementById('reviewicon');
