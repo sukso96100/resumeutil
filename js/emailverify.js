@@ -2,6 +2,7 @@ var EmailCheckDialog = document.getElementById("emailcheck")
 var UnVerifiedEmail = document.getElementById("unverifiedemail")
 
 document.addEventListener('polymer-ready', function() {
+  CurrentUserVar.fetch()
   EmailCheckDialog = document.getElementById("emailcheck")
   UnVerifiedEmail = document.getElementById("unverifiedemail")
   checkEmailVerified()
