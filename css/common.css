@@ -40,3 +40,7 @@ core-drawer-panel:not([narrow]) #navicon{
 paper-input-decorator{
     text-align: left;
 }
+
+#unverifiedemail{
+    font-style: bold;
+}

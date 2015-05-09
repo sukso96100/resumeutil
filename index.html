@@ -24,6 +24,7 @@
         <script src="js/form.js"></script>
         <script src="js/util.js"></script>
         <script src="js/comments.js"></script>
+        <script src="js/emailverify.js"></script>
         
 <!--        HTML Imports-->
         <link rel="import" href="bower_components/core-header-panel/core-header-panel.html">
@@ -154,7 +155,15 @@
         </core-drawer-panel>
        
         <paper-toast id="toast"></paper-toast>
-        <paper-dialog></paper-dialog>
+        <paper-dialog id="emailcheck" heading="이메일 인증이 필요합니다." transition="core-transition-center">
+            <p>새로 가입하신 후, 또는 이메일을 변경하신 후 이메일 인증이 필요하나, 아직 이메일 인증을 하지 않으신 것 같습니다.<br>
+             본인 이메일의 받은편지함에서 "resumeutil@youngbin.tk" 에서 보낸 이메일 인증 메일의 안내에 따라 이메일을 인증하세요.<br>
+            회원님 계정의 이메일 주소는 아래와 같습니다. 인증 메일을 받지 못하셨거나, 찾으실 수 없으신 경우 아래 "인증메일 다시 받기" 를 누르세요.<br>
+                혹시 스팸메일함에 인증 메일이 있을수도 있으므로 한번 확인해 보시길 바랍니다.</p>
+            <p id="unverifiedemail"></p>
+            <paper-button raised onclick="resendVerificationEmail()">인증메일 다시 받기</paper-button>
+            <paper-button raised onclick="closeDialog()">닫기</paper-button>
+</paper-dialog>
         
         
               
