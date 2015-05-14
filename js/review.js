@@ -57,6 +57,7 @@ function loadPublicUserForm(){
                     line = line + "</p>";
                     contentarea.innerHTML = line;
                      showToast(userName+" 님의 양식을 불러왔습니다.")
+                     loadComments()
                     }catch(e){
                     showToast("해당 사용자의 양식을 볼 권한이 없거나, 존재하지 않는 사용자 입니다.")
                      var contentarea = document.getElementById("content");
@@ -72,9 +73,6 @@ function loadPublicUserForm(){
 //                     document.getElementById('statemsg').innerHTML = "";
                         }
                     });
-    
-     
-           loadComments()
 }
 
 function getHash() {
