@@ -4,7 +4,16 @@ function updateComments(){
         }
 }
 
+function reloadComments(){
+    var comment_input = document.getElementById("comment-input");
+    if(comment_input.disabled == false){
+        loadComments()
+    }
+}
+
 function loadComments(){
+     var comments = document.getElementById("comments");
+     comments.innerHTML = "";
     console.log("loading comments")
     var newcomment = document.getElementById("comment-input").value;
     var CommentsDB = Parse.Object.extend("Comments");
@@ -34,7 +43,7 @@ function loadComments(){
                         var comments = document.getElementById("comments");
                         comments.innerHTML = "";
                         for(var i=0; i<array.length; i++){
-                            var element = "<p>"+array[i]+"</p><br>";	
+                            var element = "<p>"+array[i]+"</p>";	
                             $('#comments').append(element);
                         }
                         

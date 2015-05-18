@@ -62,7 +62,11 @@
 
         <core-drawer-panel id="reviewPanel" rightDrawer>
             <core-header-panel flex drawer class="comment">
-                      <core-menu id="comments" class="comment"></core-menu>
+                 <core-toolbar>
+                    <span flex>첨삭</span>
+                 <paper-icon-button id="comment-refresh" icon="refresh" onclick="reloadComments()"></paper-icon-button>
+                </core-toolbar>
+                      <div id="comments" class="comment"></div>
                       <div class="comment">
                       <paper-input-decorator label="의견 입력">
                   <input type="text" id="comment-input" onkeypress="updateComments()">
@@ -80,6 +84,7 @@
   <core-toolbar>
       <paper-icon-button icon="arrow-back" onclick="href('index.html')"></paper-icon-button>
        <span flex>첨삭하기</span>
+      <paper-icon-button id="form-refresh" icon="refresh" onclick="loadPublicUserForm()"></paper-icon-button>
       <paper-icon-button id="reviewicon" icon="question-answer" ></paper-icon-button>
            </core-toolbar>
   <div align="center" class="content-area">

@@ -68,8 +68,12 @@
             <core-header-panel flex main>
 
                 <core-drawer-panel id="reviewPanel" rightDrawer>
-            <core-header-panel flex drawer class="comment" id="commentpanel">
-                      <core-menu id="comments" class="comment"></core-menu>
+             <core-header-panel flex drawer class="comment">
+                 <core-toolbar>
+                    <span flex>첨삭</span>
+                 <paper-icon-button id="comment-refresh" icon="refresh" onclick="reloadComments()"></paper-icon-button>
+                </core-toolbar>
+                      <div id="comments" class="comment"></div>
                       <div class="comment">
                       <paper-input-decorator label="의견 입력">
                   <input type="text" id="comment-input" onkeypress="updateComments()">
@@ -77,7 +81,7 @@
                 <paper-button raised onclick="loadComments()">
                   <core-icon icon="add-circle"></core-icon>의견 추가
                 </paper-button><br>
-              </div>
+                      </div>                      
               </core-header-panel>
                 
             <core-header-panel flex main>
