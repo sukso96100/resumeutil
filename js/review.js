@@ -27,6 +27,7 @@ document.addEventListener('polymer-ready', function() {
   });
     
 function loadPublicUserForm(){
+    var comment_input = document.getElementById("comment-input");
     showToast("찾는 중")
     var userName = getHash()
     userName.replace(/\s/g,"")
@@ -58,10 +59,12 @@ function loadPublicUserForm(){
                     contentarea.innerHTML = line;
                      showToast(userName+" 님의 양식을 불러왔습니다.")
                      loadComments()
+                     comment_input.disalbled = false;
                     }catch(e){
                     showToast("해당 사용자의 양식을 볼 권한이 없거나, 존재하지 않는 사용자 입니다.")
                      var contentarea = document.getElementById("content");
                     contentarea.innerHTML = "해당 사용자의 양식을 볼 권한이 없거나, 존재하지 않는 사용자 입니다.";
+                        comment_input.disalbled = true;
                     }
                     
                      
@@ -69,6 +72,7 @@ function loadPublicUserForm(){
                 },
                 error: function(error) {
                     showToast("양식을 불러오지 못했습니다.")
+                    comment_input.disalbled = true;
                     //Data Not Exist
 //                     document.getElementById('statemsg').innerHTML = "";
                         }

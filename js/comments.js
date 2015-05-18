@@ -1,11 +1,3 @@
-function toggleComments(){
-    document.getElementById("collapse").toggle();
-}
-
-function closeComments(){
-    document.getElementById("collapse").opened=false;
-}
-
 function updateComments(){
     if (event.keyCode == 13){
       loadComments()
@@ -14,7 +6,7 @@ function updateComments(){
 
 function loadComments(){
     console.log("loading comments")
- var newcomment = document.getElementById("comment-input").value;
+    var newcomment = document.getElementById("comment-input").value;
     var CommentsDB = Parse.Object.extend("Comments");
         var query = new Parse.Query(CommentsDB);
             query.equalTo("username", USERNAME4COMMENTS);
