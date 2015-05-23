@@ -17,6 +17,7 @@ document.addEventListener('polymer-ready', function() {
         }
 });
 
+
 function initPage(){
     console.log("onload")
     loadJson()

@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+    <head>
+<!--        Some METAs-->
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+<!--        Older IE Support-->
+        <!--[if lt IE 9]>
+            <script src="bower_components/html5shiv/dist/html5shiv.js"></script>
+        <![endif]-->
+        
+<!--        Webcomponets Support-->
+        <script src="bower_components/webcomponentsjs/webcomponents.min.js"></script>
+                
+<!--        Jquery-->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+        
+<!--        Parse JS SDK-->
+        <script src="https://www.parsecdn.com/js/parse-1.4.2.min.js"></script>
+        <script src="js/initparse.js"></script>
+        <script src="js/user.js"></script>
+        <script src="js/form.js"></script>
+        <script src="js/util.js"></script>
+        <script src="js/comments.js"></script>
+        <script src="js/emailverify.js"></script>
+        <script src="js/loaderpage.js"></script>
+        
+<!--        HTML Imports-->
+        <link rel="import" href="bower_components/core-header-panel/core-header-panel.html">
+        <link rel="import" href="bower_components/core-toolbar/core-toolbar.html">
+        <link rel="import" href="bower_components/paper-icon-button/paper-icon-button.html">
+        <link rel="import" href="bower_components/paper-shadow/paper-shadow.html">
+        <link rel="import" href="bower_components/paper-button/paper-button.html">
+        <link rel="import" href="bower_components/paper-input/paper-input-decorator.html">
+        <link rel="import" href="bower_components/core-drawer-panel/core-drawer-panel.html">
+        <link rel="import" href="bower_components/paper-toast/paper-toast.html">
+        <link rel="import" href="elements/drawer-content.html">
+        <link rel="import" href="elements/loader.html">
+<!--        <link rel="import" href="elements/email-verfication-alert.html">-->
+        <link rel="import" href="bower_components/paper-dialog/paper-dialog.html">
+        <link rel="import" href="bower_components/core-pages/core-pages.html">
+
+<!--       Stylesheet-->
+        <link rel="stylesheet" href="css/common.css">
+         <!--Legacy Browser Check-->
+        <script> 
+        var $buoop = {c:2}; 
+        function $buo_f(){ 
+         var e = document.createElement("script"); 
+         e.src = "//browser-update.org/update.js"; 
+         document.body.appendChild(e);
+        };
+        try {document.addEventListener("DOMContentLoaded", $buo_f,false)}
+        catch(e){window.attachEvent("onload", $buo_f)}
+        </script> 
+<!--        Title-->
+        <title>ResumeUtil</title>
+        
+    </head>
+    <body onload="initPage()">
+        <core-drawer-panel id="drawerPanel">
+            <core-header-panel flex drawer style="background: white;">
+<core-menu><paper-item onclick="moveToLogin()"><core-item icon="account-circle" label="로그인" id="usernameitem"></core-item></core-menu></paper-item>
+
+                <drawer-content></drawer-content>
+              </core-header-panel>
+                
+               
+            
+<!--            <core-header-panel >-->
+<core-pages id="pages" selected="0" flex main>
+  <div>
+     <core-drawer-panel id="reviewPanel" rightDrawer>
+             <core-header-panel flex drawer class="comment">
+                 <core-toolbar>
+                    <span flex>첨삭</span>
+                 <paper-icon-button id="comment-refresh" icon="refresh" onclick="reloadComments()"></paper-icon-button>
+                </core-toolbar>
+                      <div id="comments" class="comment"></div>
+                      <div class="comment">
+                      <paper-input-decorator label="의견 입력">
+                  <input type="text" id="comment-input" onkeypress="updateComments()">
+                </paper-input-decorator>
+                <paper-button raised onclick="loadComments()">
+                  <core-icon icon="add-circle"></core-icon>의견 추가
+                </paper-button><br>
+                      </div>                      
+              </core-header-panel>
+                
+            <core-header-panel flex main>
+<core-toolbar>
+                    <paper-icon-button id="navicon" icon="menu" ></paper-icon-button>
+                    <span flex>ResumeUtil</span>
+                        <paper-icon-button id="reviewicon" icon="question-answer" ></paper-icon-button>
+                </core-toolbar>
+               
+                <div>
+                     <div class="g-plusone" data-href="https://www.youngbin.tk/resumeutil"></div>
+         <div class="fb-like" data-href="https://www.youngbin.tk/resumeutil" data-layout="button_count" data-action="like" data-show-faces="false" data-share="false"></div><br>
+                    <!--        Contents-->
+                    <div id="printArea"><br><br>    
+                       
+                        <paper-shadow z="1" class="largecard">
+                            <p id="updatedAt"></p>
+                            <h2>학생부 종합전형 자기소개서 공통양식</h2>
+                
+                            <h3>1. 고등학교 재학기간 중 학업에 기울인 노력과 학습 경험에 대해, 배우고 느낀 점을 중심으로 기술해 주시기 바랍니다(1,000자 이내).</h3>
+                            <paper-input-decorator label="여기에 글자수가 표시됩니다">
+                                <input readonly type="text" id='q1length' name="q1length" label="여기에 글자수가 표시됩니다">
+                            </paper-input-decorator><br>
+                            <paper-input-decorator>
+                                <textarea class="wrap" rows="25" id="q1" onKeyUp="textCounter(this,'q1length')"></textarea >
+                            </paper-input-decorator>
+                        <br>
+                            <h3>2. 고등학교 재학기간 중 본인이 의미를 두고 노력했던 교내 활동을 배우고 느낀점을 중심으로 3개 이내로 기술해 주시기 바랍니다. 단, 교외 활동 중 학교장의 허락을 받고 참여한 활동은 포함됩니다(1,500자 이내).</h3>
+                            <paper-input-decorator label="여기에 글자수가 표시됩니다">
+                                <input readonly type="text" id='q2length' name="q2length">
+                            </paper-input-decorator><br>
+                            <paper-input-decorator>
+                                 <textarea class="wrap" rows="30" id="q2" onKeyUp="textCounter(this,'q2length')"></textarea >
+                            </paper-input-decorator>
+                        <br>
+                            <h3>3. 학교 생활 중 배려, 나눔, 협력, 갈등 관리 등을 실천한 사례를 들고, 그 과정을 통해 배우고 느낀 점을 기술해 주시기 바랍니다(1,000자 이내).</h3>
+                            <paper-input-decorator label="여기에 글자수가 표시됩니다">
+                                <input readonly type="text" id='q3length' name="q3length">
+                            </paper-input-decorator><br>
+                            <paper-input-decorator>
+                                <textarea class="wrap" rows="25" id="q3" onKeyUp="textCounter(this,'q3length')"></textarea >
+                            </paper-input-decorator>
+                        <br>
+
+                                <h4>(4번 질문은 대학교별로 다릅니다, 원하시는 대학교의 질문을 선택하신 후, 답하세요.)</h4>
+                                <select id="q4select" onchange="setQ4()" onclick="setQ4()" onfocus="setQ4()">
+                                    <option>질문 없음</option>
+                                </select><br><br>
+                                <h4>(대답할 질문)</h4>
+                                <paper-input-decorator label="대답할 질문을 여기에 입력하거나, 위에서 선택하세요.">
+                                    <input id="q4qinput" width="100%" type="text" class="form-control">
+                                </paper-input-decorator> <br>
+                                <paper-input-decorator label="여기에 글자수가 표시됩니다">
+                                    <input readonly type="text" id='q4length' name="q4length">
+                                </paper-input-decorator><br>
+                                <paper-input-decorator>
+                                    <textarea class="wrap" rows="25" id="q4" onKeyUp="textCounter(this,'q4length')"></textarea >
+                                </paper-input-decorator>
+                            <br>
+                            </paper-shadow>
+                </div>
+                   
+                    </div>
+                    
+            </core-header-panel>
+                
+        </core-drawer-panel>
+    </div>
+  <div> <form-loader-page></form-loader-page></div>
+</core-pages>
+               
+               
+              </div>
+                </div>
+                 
+<!--            </core-header-panel>-->
+                
+        </core-drawer-panel>
+       
+        <paper-toast id="toast"></paper-toast>
+       <paper-dialog id="emailcheck" heading="이메일 인증이 필요합니다." transition="core-transition-center">
+            <p>새로 가입하신 후, 또는 이메일을 변경하신 후 이메일 인증이 필요하나, 아직 이메일 인증을 하지 않으신 것 같습니다.<br>
+             본인 이메일의 받은편지함에서 "resumeutil@youngbin.tk" 에서 보낸 이메일 인증 메일의 안내에 따라 이메일을 인증하세요.<br>
+            회원님 계정의 이메일 주소는 아래와 같습니다. 인증 메일을 받지 못하셨거나, 찾으실 수 없으신 경우 아래 "인증메일 다시 받기" 를 누르세요.<br>
+                혹시 스팸메일함에 인증 메일이 있을수도 있으므로 한번 확인해 보시길 바랍니다.</p>
+            <p id="unverifiedemail"></p>
+            <paper-button raised onclick="resendVerificationEmail()">인증메일 다시 받기</paper-button>
+            <paper-button raised onclick="closeDialog()">닫기</paper-button>
+</paper-dialog>
+        
+        
+              
+    </body>
+</html>

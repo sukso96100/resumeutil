@@ -5,6 +5,7 @@
 <polymer-element name="drawer-content">
   <template>
      <core-menu>
+         <paper-item onclick="openLoaderPage()"><core-item icon="folder-open" label="불러오기"></core-item></paper-item>
         <paper-item onclick="saveFormData()"><core-item icon="save" label="저장"></core-item></paper-item>
         <paper-item onclick="printContent()"><core-item icon="print" label="인쇄"></core-item></paper-item>
            <paper-item onclick="href('review.html')"><core-item icon="question-answer" label="첨삭하기"</core-item></paper-item>

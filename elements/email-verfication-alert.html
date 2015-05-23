@@ -1,13 +1,16 @@
 <link rel="import" href="../bower_components/polymer/polymer.html">
 <link rel="import" href="../bower_components/paper-dialog/paper-dialog.html">
+<link rel="import" href="../bower_components/paper-button/index.html">
 <polymer-element name="email-verfication-alert">
   <template>
-   <paper-dialog id="dialog" heading="이메일 인증이 필요합니다.">
-        <p>회원 가입 후 또는 이메일 변경 후, 이메일 인증을 하지 않으셨습니다.
-       메일 수신함을 열어, 이메일 인증 메일을 읽으시고, 첨부된 링크를 따라가서 이메일 인증을 완료해주세요.
-       인증 메일을 찾지 못하신 경우, 스팸 메일함이나 휴지통을 확인해 보시고. 정말 없는 경우 아레 버튼으로 인증 메일을 다시 보내세요.</p>
-       <paper-button onclick="emailVerficationTask()">인증 메일 다시 보내기</paper-button>
-            <paper-button core-overlay-toggle>닫기</paper-button>
+   <paper-dialog id="emailcheck" heading="이메일 인증이 필요합니다." transition="core-transition-center">
+            <p>새로 가입하신 후, 또는 이메일을 변경하신 후 이메일 인증이 필요하나, 아직 이메일 인증을 하지 않으신 것 같습니다.<br>
+             본인 이메일의 받은편지함에서 "resumeutil@youngbin.tk" 에서 보낸 이메일 인증 메일의 안내에 따라 이메일을 인증하세요.<br>
+            회원님 계정의 이메일 주소는 아래와 같습니다. 인증 메일을 받지 못하셨거나, 찾으실 수 없으신 경우 아래 "인증메일 다시 받기" 를 누르세요.<br>
+                혹시 스팸메일함에 인증 메일이 있을수도 있으므로 한번 확인해 보시길 바랍니다.</p>
+            <p id="unverifiedemail"></p>
+            <paper-button raised onclick="resendVerificationEmail()">인증메일 다시 받기</paper-button>
+            <paper-button raised onclick="closeDialog()">닫기</paper-button>
 </paper-dialog>
   </template>
   <script>
