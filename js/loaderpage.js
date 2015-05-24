@@ -8,6 +8,8 @@ document.addEventListener('polymer-ready', function() {
 });
 
 function showShared(){
+    var loader_menu = document.getElementById('loader-menu');
+    loader_menu.closeDrawer();
        var UserIntroData = Parse.Object.extend("UserIntroData");
             var query = new Parse.Query(UserIntroData);
             query.startsWith("username", "");
@@ -30,11 +32,13 @@ function openLoaderPage(){
 var pages = document.querySelector('core-pages');
 pages.selected = 1
 var loader_menu = document.getElementById('loader-menu');
-    loader_menu.togglePanel();
+    loader_menu.openDrawer();
 var drawerPanel = document.getElementById('drawerPanel');
     drawerPanel.closeDrawer();
 }
 function closeLoaderPage(){
+    var loader_menu = document.getElementById('loader-menu');
+    loader_menu.closeDrawer();
 var pages = document.querySelector('core-pages');
 pages.selected = 0
 }
