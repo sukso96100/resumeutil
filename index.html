@@ -25,6 +25,7 @@
         <script src="js/util.js"></script>
         <script src="js/comments.js"></script>
         <script src="js/emailverify.js"></script>
+        <script src="js/loaderpage.js"></script>
         
 <!--        HTML Imports-->
         <link rel="import" href="bower_components/core-header-panel/core-header-panel.html">
@@ -36,7 +37,10 @@
         <link rel="import" href="bower_components/core-drawer-panel/core-drawer-panel.html">
         <link rel="import" href="bower_components/paper-toast/paper-toast.html">
         <link rel="import" href="elements/drawer-content.html">
+<!--        <link rel="import" href="elements/loader.html">-->
+<!--        <link rel="import" href="elements/email-verfication-alert.html">-->
         <link rel="import" href="bower_components/paper-dialog/paper-dialog.html">
+        <link rel="import" href="bower_components/core-pages/core-pages.html">
 
 <!--       Stylesheet-->
         <link rel="stylesheet" href="css/common.css">
@@ -58,16 +62,17 @@
     <body onload="initPage()">
         <core-drawer-panel id="drawerPanel">
             <core-header-panel flex drawer style="background: white;">
-<core-menu><paper-item onclick="moveToLogin()"><core-item icon="account-circle" label="사용자 계정" id="usernameitem"></core-item></core-menu></paper-item>
+<core-menu><paper-item onclick="moveToLogin()"><core-item icon="account-circle" label="로그인" id="usernameitem"></core-item></core-menu></paper-item>
 
                 <drawer-content></drawer-content>
               </core-header-panel>
                 
                
             
-            <core-header-panel flex main>
-
-                <core-drawer-panel id="reviewPanel" rightDrawer>
+<!--            <core-header-panel >-->
+<core-pages id="pages" selected="0" flex main>
+  <div>
+     <core-drawer-panel id="reviewPanel" rightDrawer>
              <core-header-panel flex drawer class="comment">
                  <core-toolbar>
                     <span flex>첨삭</span>
@@ -99,6 +104,7 @@
                        
                         <paper-shadow z="1" class="largecard">
                             <p id="updatedAt"></p>
+                            <p id="formowner"></p>
                             <h2>학생부 종합전형 자기소개서 공통양식</h2>
                 
                             <h3>1. 고등학교 재학기간 중 학업에 기울인 노력과 학습 경험에 대해, 배우고 느낀 점을 중심으로 기술해 주시기 바랍니다(1,000자 이내).</h3>
@@ -143,21 +149,52 @@
                             <br>
                             </paper-shadow>
                 </div>
+                   
                     </div>
                     
             </core-header-panel>
                 
         </core-drawer-panel>
+    </div>
+  <div> 
+        <core-drawer-panel rightDrawer>
+  <div drawer>
+                 <core-menu>
+         <paper-item onclick="loadMyForm()"><core-item icon="account-circle" label="내 양식 불러오기"></core-item></paper-item>
+        <paper-item onclick="showToast('준비중인 기능입니다.')"><core-item icon="history" label="최근 열어본 양식"></core-item></paper-item>
+        <paper-item onclick="showShared()"><core-item icon="folder-shared" label="공유받은 양식"></core-item></paper-item>
+    </core-menu>
+                </div>
+        <core-header-panel  flex main>
+                 <core-toolbar>
+                     <paper-icon-button icon="arrow-back" onclick="closeLoaderPage()"></paper-icon-button>
+                      <paper-input-decorator label="사용자 검색" flex>
+                  <input type="text" id="search-input" onKeyUp="searchUser(this)">
+                </paper-input-decorator>
+                 <paper-icon-button icon="search" onclick=""></paper-icon-button>
+                </core-toolbar>
+            <div >
+            <paper-shadow style="padding : 16px; margin : 16px;" >
+                <core-menu id="results">
+    </core-menu>
+                </paper-shadow>  
+            </div>
+                             
+              </core-header-panel>
+</core-drawer-panel>
+    </div>
+</core-pages>
+               
                
               </div>
                 </div>
                  
-            </core-header-panel>
+<!--            </core-header-panel>-->
                 
         </core-drawer-panel>
        
         <paper-toast id="toast"></paper-toast>
-        <paper-dialog id="emailcheck" heading="이메일 인증이 필요합니다." transition="core-transition-center">
+       <paper-dialog id="emailcheck" heading="이메일 인증이 필요합니다." transition="core-transition-center">
             <p>새로 가입하신 후, 또는 이메일을 변경하신 후 이메일 인증이 필요하나, 아직 이메일 인증을 하지 않으신 것 같습니다.<br>
              본인 이메일의 받은편지함에서 "resumeutil@youngbin.tk" 에서 보낸 이메일 인증 메일의 안내에 따라 이메일을 인증하세요.<br>
             회원님 계정의 이메일 주소는 아래와 같습니다. 인증 메일을 받지 못하셨거나, 찾으실 수 없으신 경우 아래 "인증메일 다시 받기" 를 누르세요.<br>

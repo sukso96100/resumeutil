@@ -20,14 +20,17 @@
                 </div>
         <core-header-panel  flex main>
                  <core-toolbar>
-                     <paper-icon-button id="comment-refresh" icon="arrow-back" onclick="closeLoaderPage()"></paper-icon-button>
+                     <paper-icon-button icon="arrow-back" onclick="closeLoaderPage()"></paper-icon-button>
                       <paper-input-decorator label="사용자 검색" flex>
-                  <input type="text" id="comment-input" onkeypress="updateComments()">
+                  <input type="text" id="search-input" onKeyUp="searchUser(this)">
                 </paper-input-decorator>
-                 <paper-icon-button id="comment-refresh" icon="search" onclick="reloadComments()"></paper-icon-button>
+                 <paper-icon-button icon="search" onclick=""></paper-icon-button>
                 </core-toolbar>
             <div >
-            <paper-shadow style="padding : 16px; margin : 16px;" id="results"></paper-shadow>  
+            <paper-shadow style="padding : 16px; margin : 16px;" >
+                <core-menu id="results">
+    </core-menu>
+                </paper-shadow>  
             </div>
                              
               </core-header-panel>
@@ -35,6 +38,8 @@
   </template>
   <script>
     Polymer();
+      
+    
   </script>
   
 </polymer-element> 

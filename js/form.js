@@ -145,14 +145,19 @@ function setQ4(){
 
         //저장된 양식 불러오기 함수
         function loadFormData(){
-            USERNAME4COMMENTS = CurrentUserVar.getUsername();
+            loadUserFormData(CurrentUserVar.getUsername())
+        }
+
+function loadUserFormData(targetuser){
+    closeLoaderPage()
+            USERNAME4COMMENTS = targetuser;
             console.log("Loading Data")
             if(CurrentUserVar==null){
             }else{
              showToast("불러오는 중");
             var UserIntroData = Parse.Object.extend("UserIntroData");
             var query = new Parse.Query(UserIntroData);
-            query.equalTo("username", CurrentUserVar.getUsername());
+            query.equalTo("username", targetuser);
             query.first({
                 success: function(results) {
                     if(results==undefined){
@@ -168,6 +173,10 @@ function setQ4(){
                     showToast("불러오기 완료");
                     setTimeout(function(){ 
                         showToast(CurrentUserVar.getUsername()+" 님, 안녕하세요.")   
+                          
+                 setTimeout(function(){ 
+                       showToast(targetuser+" 님의 양식을 불러왔습니다.")  
+                    }, 1000);
                     }, 1000);
                      
                 },
@@ -178,7 +187,22 @@ function setQ4(){
                     });
             }
             loadComments()
+            if(targetuser == CurrentUserVar.getUsername()){
+                document.getElementById('q1').disabled = false;
+                    document.getElementById('q2').disabled = false;
+                    document.getElementById('q3').disabled = false;
+                    document.getElementById('q4').disabled = false;
+                    document.getElementById('q4qinput').disabled = false;
+            }else{
+                 document.getElementById('q1').disabled = true;
+                    document.getElementById('q2').disabled = true;
+                    document.getElementById('q3').disabled = true;
+                    document.getElementById('q4').disabled = true;
+                    document.getElementById('q4qinput').disabled = true;
+            }
+                document.getElementById('formowner').innerHTML = targetuser + "님의 양식"
         }
+
 
 //글자수 카운터
 function textCounter(field,withspace) {         
