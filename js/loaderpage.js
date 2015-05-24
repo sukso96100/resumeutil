@@ -1,3 +1,12 @@
+document.addEventListener('polymer-ready', function() {
+  var loader_menu_toggle = document.getElementById('loader-menu-toggle');
+  var loader_menu = document.getElementById('loader-menu');
+  loader_menu_toggle.addEventListener('click', function() {
+    loader_menu.togglePanel();
+  });
+  
+});
+
 function showShared(){
        var UserIntroData = Parse.Object.extend("UserIntroData");
             var query = new Parse.Query(UserIntroData);
@@ -20,6 +29,10 @@ function loadMyForm(){
 function openLoaderPage(){
 var pages = document.querySelector('core-pages');
 pages.selected = 1
+var loader_menu = document.getElementById('loader-menu');
+    loader_menu.togglePanel();
+var drawerPanel = document.getElementById('drawerPanel');
+    drawerPanel.closeDrawer();
 }
 function closeLoaderPage(){
 var pages = document.querySelector('core-pages');
