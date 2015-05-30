@@ -1,4 +1,4 @@
-document.addEventListener('polymer-ready', function() {
+document.addEventListener('WebComponentsReady', function() {
   var reviewicon = document.getElementById('reviewicon');
   var reviewPanel = document.getElementById('reviewPanel');
     reviewicon.addEventListener('click', function() {
@@ -22,7 +22,7 @@ window.location.hash="!"+document.getElementById("usernameinput").value;
     USERNAME4COMMENTS = getHash();
     }
 
-document.addEventListener('polymer-ready', function() {
+document.addEventListener('WebComponentsReady', function() {
   setPublicToggleState()
   });
     

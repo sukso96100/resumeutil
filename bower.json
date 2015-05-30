@@ -1,13 +1,11 @@
 {
   "name": "resumeutil",
-  "version": "0.1",
+  "version": "0.0.0",
   "homepage": "https://github.com/sukso96100/resumeutil",
   "authors": [
-    "Youngbin Han <sukso96100@gmail.com>"
+    "sukso96100 <sukso96100@gmail.com>"
   ],
-  "description": "A Tool for Practice Writting Resume for University Enterance",
-  "main": "index.html",
-  "license": "GPL V3+",
+  "license": "MIT",
   "ignore": [
     "**/.*",
     "node_modules",
@@ -16,8 +14,24 @@
     "tests"
   ],
   "dependencies": {
-    "polymer": "Polymer/polymer#~0.5.4",
-    "core-elements": "Polymer/core-elements#~0.5.4",
-    "paper-elements": "Polymer/paper-elements#~0.5.4"
+    "polymer": "Polymer/polymer#^1.0.0",
+    "iron-icons": "PolymerElements/iron-icons#^1.0.0",
+    "iron-pages": "PolymerElements/iron-pages#^1.0.0",
+    "paper-button": "PolymerElements/paper-button#^1.0.0",
+    "paper-dialog": "PolymerElements/paper-dialog#^1.0.0",
+    "paper-drawer-panel": "PolymerElements/paper-drawer-panel#^1.0.0",
+    "paper-fab": "PolymerElements/paper-fab#^1.0.0",
+    "paper-header-panel": "PolymerElements/paper-header-panel#^1.0.0",
+    "paper-icon-button": "PolymerElements/paper-icon-button#^1.0.0",
+    "paper-item": "PolymerElements/paper-item#^1.0.0",
+    "paper-material": "PolymerElements/paper-material#^1.0.0",
+    "paper-menu": "PolymerElements/paper-menu#^1.0.0",
+    "paper-toast": "PolymerElements/paper-toast#^1.0.0",
+    "paper-toggle-button": "PolymerElements/paper-toggle-button#^1.0.0",
+    "paper-toolbar": "PolymerElements/paper-toolbar#^1.0.0",
+    "iron-icon": "PolymerElements/iron-icon#^1.0.0",
+    "paper-input": "PolymerElements/paper-input#^1.0.0",
+    "iron-flex-layout": "PolymerElements/iron-flex-layout#~1.0.1",
+    "paper-tabs": "PolymerElements/paper-tabs#^1.0.0"
   }
 }

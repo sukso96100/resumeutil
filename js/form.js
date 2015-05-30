@@ -1,4 +1,4 @@
-document.addEventListener('polymer-ready', function() {
+document.addEventListener('WebComponentsReady', function() {
     CurrentUserVar.fetch()
   var navicon = document.getElementById('navicon');
   var drawerPanel = document.getElementById('drawerPanel');
@@ -13,7 +13,7 @@ document.addEventListener('polymer-ready', function() {
   
   if(CurrentUserVar!=null){
     loadFormData()
-    document.getElementById("usernameitem").setAttribute("label",CurrentUserVar.getUsername());
+    document.getElementById("usernameitem").innerHTML = CurrentUserVar.getUsername();
         }
 });
 

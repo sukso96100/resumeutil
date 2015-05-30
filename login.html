@@ -12,7 +12,8 @@
         <![endif]-->
         
 <!--        Webcomponets Support-->
-        <script src="bower_components/webcomponentsjs/webcomponents.min.js"></script>
+        <script src="bower_components/webcomponentsjs/webcomponents-lite.min.js"></script>
+
         
 <!--        Parse JS SDK-->
         <script src="https://www.parsecdn.com/js/parse-1.4.2.min.js"></script>
@@ -22,13 +23,14 @@
         <script src="js/toast.js"></script>
         
 <!--        HTML Imports-->
-        <link rel="import" href="bower_components/core-header-panel/core-header-panel.html">
-        <link rel="import" href="bower_components/core-toolbar/core-toolbar.html">
+        <link rel="import" href="bower_components/paper-header-panel/paper-header-panel.html">
+        <link rel="import" href="bower_components/paper-toolbar/paper-toolbar.html">
         <link rel="import" href="bower_components/paper-icon-button/paper-icon-button.html">
-        <link rel="import" href="bower_components/core-icon/core-icon.html">
-        <link rel="import" href="bower_components/paper-shadow/paper-shadow.html">
+        <link rel="import" href="bower_components/iron-icon/iron-icon.html">
+        <link rel="import" href="bower_components/iron-icons/iron-icons.html">
+        <link rel="import" href="bower_components/paper-material/paper-material.html">
         <link rel="import" href="bower_components/paper-button/paper-button.html">
-        <link rel="import" href="bower_components/paper-input/paper-input-decorator.html">
+        <link rel="import" href="bower_components/paper-input/paper-input-container.html">
         <link rel="import" href="bower_components/paper-toast/paper-toast.html">
 
         <!--       Stylesheet-->
@@ -48,58 +50,64 @@
         <title>ResumeUtil</title>
         
     </head>
-    <body onload="loginCheckLoginpage()" fullbleed layout vertical>
-          <core-header-panel flex>
+    <body onload="loginCheckLoginpage()" class="fullbleed layout vertical">
+          <paper-header-panel class="flex">
            
-  <core-toolbar>
+  <paper-toolbar>
       <paper-icon-button icon="arrow-back" onclick="href('index.html')"></paper-icon-button>
       <div>로그인</div>
-           </core-toolbar>
+           </paper-toolbar>
   <div align="center" class="content-area">
            
-        <paper-shadow z="1" class="usercard">
-               <core-icon icon="account-circle"></core-icon>
+        <paper-material elavation="1" class="usercard">
+               <iron-icon icon="account-circle"></iron-icon>
                 <h1>로그인</h1>
-                <paper-input-decorator floatingLabel label="사용자 계정이름(ID) 입력">
+                <paper-input-container >
+                    <label>사용자 계정이름(ID) 입력</label>
                     <input id="username" type="text">
-                </paper-input-decorator>
-                <paper-input-decorator floatingLabel label="비밀번호 입력">
+                </paper-input-container>
+                <paper-input-container >
+                    <label>비밀번호 입력</label>
                     <input id="password" type="password" onkeypress="doWithEnterKey(0)">
-                </paper-input-decorator>
+                </paper-input-container>
                
                <paper-button raised style="background: green; color:white;" onclick="loginTask()">
-               <core-icon icon="lock-open"></core-icon>로그인</paper-button>
-            </paper-shadow><br>
+               <iron-icon icon="lock-open"></iron-icon>로그인</paper-button>
+            </paper-material><br>
            
-           <paper-shadow z="1" class="usercard">
-               <core-icon icon="error"></core-icon>
+           <paper-material elavation="1" class="usercard">
+               <iron-icon icon="error"></iron-icon>
                 <h1>비밀번호 찾기</h1>
-                <paper-input-decorator floatingLabel label="가입시 입력한 이메일 주소 입력">
+                <paper-input-container >
+                    <label>가입시 입력한 이메일 주소 입력</label>
                     <input id="passwordreset" type="text" onkeypress="doWithEnterKey(1)">
-                </paper-input-decorator>
+                </paper-input-container>
                
                <paper-button raised style="background: green; color:white;" onclick="resetPasswordTask()">
-               <core-icon icon="find-replace"></core-icon>비밀번호 찾기</paper-button>
-            </paper-shadow><br>
+               <iron-icon icon="find-replace"></iron-icon>비밀번호 찾기</paper-button>
+            </paper-material><br>
            
-           <paper-shadow z="1" class="usercard">
-               <core-icon icon="add-circle"></core-icon>
+           <paper-material elavation="1" class="usercard">
+               <iron-icon icon="add-circle"></iron-icon>
                 <h1>새 계정 만들기</h1>
-                <paper-input-decorator floatingLabel label="사용할 사용자 계정이름(ID) 입력">
+                <paper-input-container >
+                    <label>사용할 사용자 계정이름(ID) 입력</label>
                     <input id="newusername" type="text">
-                </paper-input-decorator>
-               <paper-input-decorator floatingLabel label="사용할 비밀번호 입력">
+                </paper-input-container>
+               <paper-input-container >
+                   <label>사용할 비밀번호 입력</label>
                     <input id="newpassword" type="password">
-                </paper-input-decorator>
-               <paper-input-decorator floatingLabel label="이메일 주소 입력">
+                </paper-input-container>
+               <paper-input-container >
+                   <label>이메일 주소 입력</label>
                     <input id="newemail" type="text" onkeypress="doWithEnterKey(2)">
-                </paper-input-decorator>
+                </paper-input-container>
                
                <paper-button raised style="background: green; color:white;" onclick="newUserTask()">
-               <core-icon icon="create"></core-icon>새로 계정 생성하기</paper-button>
-            </paper-shadow>
+               <iron-icon icon="create"></iron-icon>새로 계정 생성하기</paper-button>
+            </paper-material>
         </div>
-</core-header-panel>
+</paper-header-panel>
         <paper-toast id="toast"></paper-toast>
     </body>
 </html>

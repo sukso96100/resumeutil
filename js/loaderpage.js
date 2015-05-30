@@ -1,10 +1,23 @@
-document.addEventListener('polymer-ready', function() {
-  var loader_menu_toggle = document.getElementById('loader-menu-toggle');
-  var loader_menu = document.getElementById('loader-menu');
+ var pages;
+ var opener = document.getElementById('loader-opener');
+document.addEventListener('WebComponentsReady', function() {
+//      pages._removeListener(pages.activateEvent);
+    opener = document.getElementById('loader-opener');
+    pages = document.querySelector('iron-pages');
+    var loader_menu_toggle = document.getElementById('loader-menu-toggle');
+    var loader_menu = document.getElementById('loader-menu');
+    var loader_closer = document.getElementById('loader-closer');
+    
+    
   loader_menu_toggle.addEventListener('click', function() {
     loader_menu.togglePanel();
   });
-  
+    loader_closer.addEventListener('click', function() {
+    opener.click();
+  });
+    
+    
+    
 });
 
 function showShared(){
@@ -24,23 +37,21 @@ function showShared(){
                     }); 
 }
 function loadMyForm(){
-    loadFormData()
     closeLoaderPage()
+    loadFormData()
 }
 
 function openLoaderPage(){
-var pages = document.querySelector('core-pages');
-pages.selected = 1
-var loader_menu = document.getElementById('loader-menu');
-    loader_menu.openDrawer();
-var drawerPanel = document.getElementById('drawerPanel');
-    drawerPanel.closeDrawer();
+    document.getElementById('formloader').opened = true
+    var layout = document.getElementById('loader-layout');
+    if(layout.innerHTML==""){
+  showLayout(0)
+    }
+  
 }
+
 function closeLoaderPage(){
-    var loader_menu = document.getElementById('loader-menu');
-    loader_menu.closeDrawer();
-var pages = document.querySelector('core-pages');
-pages.selected = 0
+   document.getElementById('formloader').opened = false
 }
 
   function searchUser(element){
@@ -69,3 +80,22 @@ pages.selected = 0
                         $('#results').append(element);
                     }
       }
+
+function showLayout(num){
+    var layout = document.getElementById('loader-layout');
+    switch(num){
+        case 0:
+            layout.innerHTML = "<paper-button raised onclick='loadMyForm()'>내 양식 불러오기</paper-button>"
+            break;
+        case 1:
+            layout.innerHTML = "준비중인 기능입니다."
+            break;
+        case 2:
+            layout.innerHTML = '<br><paper-menu id="results"></paper-menu>'
+            showShared()
+            break;
+        case 3:
+            layout.innerHTML = '<paper-input-container> <label>사용자 검색</label><input type="text" id="search-input" onKeyUp="searchUser(this)"> </paper-input-container><br><paper-menu id="results"></paper-menu>'
+             
+    }
+}
