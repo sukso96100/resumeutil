@@ -46,6 +46,9 @@
         <link rel="import" href="bower_components/iron-pages/iron-pages.html">
         <link rel="import" href="bower_components/paper-item/all-imports.html">
         <link rel="import" href="bower_components/paper-tabs/paper-tabs.html">
+                <link rel="import" href="bower_components/neon-animation/animations/scale-up-animation.html">
+        <link rel="import" href="bower_components/neon-animation/animations/scale-down-animation.html">
+
 
 <!--       Stylesheet-->
         <link rel="stylesheet" href="css/common.css">
@@ -196,7 +199,8 @@
         </paper-drawer-panel>
        
         <paper-toast id="toast"></paper-toast>
-       <paper-dialog id="emailcheck" heading="이메일 인증이 필요합니다." transition="core-transition-center">
+       <paper-dialog id="emailcheck" heading="이메일 인증이 필요합니다."
+                     entry-animation="scale-up-animation" exit-animation="scale-down-animation">
             <p>새로 가입하신 후, 또는 이메일을 변경하신 후 이메일 인증이 필요하나, 아직 이메일 인증을 하지 않으신 것 같습니다.<br>
              본인 이메일의 받은편지함에서 "resumeutil@youngbin.tk" 에서 보낸 이메일 인증 메일의 안내에 따라 이메일을 인증하세요.<br>
             회원님 계정의 이메일 주소는 아래와 같습니다. 인증 메일을 받지 못하셨거나, 찾으실 수 없으신 경우 아래 "인증메일 다시 받기" 를 누르세요.<br>
@@ -206,7 +210,8 @@
             <paper-button raised onclick="closeDialog()">닫기</paper-button>
 </paper-dialog>
 
-<paper-dialog id="formloader" style="width:100%; height:100%;">
+<paper-dialog id="formloader" style="width:100%; height:100%;" 
+               entry-animation="scale-up-animation" exit-animation="scale-down-animation">
     <h2>양식 불러오기</h2>
            <paper-tabs selected="0" scrollable="true">
   <paper-tab onclick="showLayout(0)">내 양식</paper-tab>
