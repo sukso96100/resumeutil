@@ -91,7 +91,7 @@ function showLayout(num){
             layout.innerHTML = "준비중인 기능입니다."
             break;
         case 2:
-            layout.innerHTML = '<br><paper-header-panel><paper-menu id="results"></paper-menu></paper-headet-panel>'
+            layout.innerHTML = '<br><paper-header-panel><paper-menu id="results"></paper-menu></paper-header-panel>'
             showShared()
             break;
         case 3:
