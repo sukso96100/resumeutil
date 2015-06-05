@@ -86,16 +86,16 @@ function showLayout(num){
     switch(num){
         case 0:
             layout.innerHTML = "<paper-button raised onclick='loadMyForm()'>내 양식 불러오기</paper-button>"
-            break;
+            bra;
         case 1:
             layout.innerHTML = "준비중인 기능입니다."
             break;
         case 2:
-            layout.innerHTML = '<br><paper-menu id="results"></paper-menu>'
+            layout.innerHTML = '<br><paper-header-panel><paper-menu id="results"></paper-menu></paper-headet-panel>'
             showShared()
             break;
         case 3:
-            layout.innerHTML = '<paper-input-container> <label>사용자 검색</label><input type="text" id="search-input" onKeyUp="searchUser(this)"> </paper-input-container><br><paper-menu id="results"></paper-menu>'
+            layout.innerHTML = '<paper-input-container> <label>사용자 검색</label><input type="text" id="search-input" onKeyUp="searchUser(this)"> </paper-input-container><br><paper-header-panel><paper-menu id="results"></paper-menu></paper-header-panel>'
              
     }
 }
