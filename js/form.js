@@ -10,7 +10,7 @@ document.addEventListener('WebComponentsReady', function() {
     reviewicon.addEventListener('click', function() {
     reviewPanel.togglePanel();
   });
-  
+
   if(CurrentUserVar!=null){
     loadFormData()
     document.getElementById("usernameitem").innerHTML = CurrentUserVar.getUsername();
@@ -22,7 +22,7 @@ function initPage(){
     console.log("onload")
     loadJson()
 //    loadFormData()
-//     showToast(CurrentUserVar.getUsername()+" 님, 안녕하세요.")    
+//     showToast(CurrentUserVar.getUsername()+" 님, 안녕하세요.")
 
 }
 
@@ -34,11 +34,11 @@ $.getJSON( "strings.json", function( data ) {
  var DataArray = data.question4;
     for(var i=0; i<DataArray.length; i++){
         var item = '<option value="'+DataArray[i]+'">'+DataArray[i]+'</option>'
-        
+
          $('#q4select').append(item);
 
     }
- 
+
 });
 }
 
@@ -47,7 +47,7 @@ function setQ4(){
     console.log(q4select)
     var item = q4select.options[q4select.selectedIndex].value;
     console.log(item)
-    document.getElementById("q4qinput").value = item;   
+    document.getElementById("q4qinput").value = item;
 }
 
 
@@ -64,8 +64,8 @@ function setQ4(){
             var q3data = document.getElementById('q3').value;
             var q4data = document.getElementById('q4').value;
             var q4qinputdata = document.getElementById('q4qinput').value;
-            
-            
+
+
             //Find Existing Data First
             var UserIntroData = Parse.Object.extend("UserIntroData");
             var query = new Parse.Query(UserIntroData);
@@ -89,7 +89,7 @@ function setQ4(){
                     userIntroACL.setWriteAccess(CurrentUserVar, true);
                     userIntroData.setACL(userIntroACL);
                     userIntroData.save(null, {
-                        success: function(userIntroData) {  
+                        success: function(userIntroData) {
                             showToast("저장 완료");
                             showLastUpdate()
                             },
@@ -104,7 +104,7 @@ function setQ4(){
                         object.set("q4",q4data);
                         object.set("q4qinput",q4qinputdata);
                         object.save(null, {
-                        success: function(userIntroData) {  
+                        success: function(userIntroData) {
                             showToast("저장 완료");
                             showLastUpdate()
                             },
@@ -113,7 +113,7 @@ function setQ4(){
                               }
                             });
                     }
-                    
+
                 },
                 error: function(error) {
                     //Data Not Exist, Create New One
@@ -130,7 +130,7 @@ function setQ4(){
                     userIntroACL.setWriteAccess(CurrentUserVar, true);
                     userIntroData.setACL(userIntroACL);
                     userIntroData.save(null, {
-                        success: function(userIntroData) {  
+                        success: function(userIntroData) {
                             showToast("저장 완료");
                             showLastUpdate()
                             },
@@ -171,14 +171,14 @@ function loadUserFormData(targetuser){
                     document.getElementById('q4qinput').value = results.get("q4qinput");
                     showLastUpdate()
                     showToast("불러오기 완료");
-                    setTimeout(function(){ 
-                        showToast(CurrentUserVar.getUsername()+" 님, 안녕하세요.")   
-                          
-                 setTimeout(function(){ 
-                       showToast(targetuser+" 님의 양식을 불러왔습니다.")  
+                    setTimeout(function(){
+                        showToast(CurrentUserVar.getUsername()+" 님, 안녕하세요.")
+
+                 setTimeout(function(){
+                       showToast(targetuser+" 님의 양식을 불러왔습니다.")
                     }, 1000);
                     }, 1000);
-                     
+
                 },
                 error: function(error) {
                     //Data Not Exist
@@ -201,12 +201,13 @@ function loadUserFormData(targetuser){
                     document.getElementById('q4qinput').disabled = true;
             }
                 document.getElementById('formowner').innerHTML = targetuser + "님의 양식"
+                document.getElementById('formname').innerHTML = targetuser + "님의 양식"
         }
 
 
 //글자수 카운터
-function textCounter(field,withspace) {         
-	var cntfield = document.getElementById(withspace) 
+function textCounter(field,withspace) {
+	var cntfield = document.getElementById(withspace)
 		cntfield.value = field.value.length;
     var withspace_num = field.value.length;
     var withoutspace_num = field.value.replace(/\s/g,"").length;
@@ -215,20 +216,20 @@ function textCounter(field,withspace) {
     if(CurrentUserVar!=null){
  	saveFormData()
     }
-   
+
 }
-        
+
 //인쇄 함수
     function printContent(){
 //    document.body.innerHTML = printArea.innerHTML;
 //			window.print();
-    
+
     var q1 = document.getElementById('q1');
     var q2 = document.getElementById('q2');
     var q3 = document.getElementById('q3');
     var q4q = document.getElementById('q4qinput');
     var q4 = document.getElementById('q4');
-    
+
     var strFeature = "";
 			strFeature += "width=800, height=800, all=no";
 
@@ -248,7 +249,7 @@ function textCounter(field,withspace) {
             objWin.document.write("</p>");
             objWin.document.write("<br>");
             objWin.document.write("<br>");
-            
+
             objWin.document.write("<h3>");
 	    objWin.document.write("2. 고등학교 재학기간 중 본인이 의미를 두고 노력했던 교내 활동을 배우고 느낀점을 중심으로 3개 이내로 기술해 주시기 바랍니다. 단, 교외 활동 중 학교장의 허락을 받고 참여한 활동은 포함됩니다(1,500자 이내).");
    	    objWin.document.write("</h3>");
@@ -258,7 +259,7 @@ function textCounter(field,withspace) {
             objWin.document.write("</p>");
             objWin.document.write("<br>");
             objWin.document.write("<br>");
-        
+
             objWin.document.write("<h3>");
             objWin.document.write("3. 학교 생활 중 배려, 나눔, 협력, 갈등 관리 등을 실천한 사례를 들고, 그 과정을 통해 배우고 느낀 점을 기술해 주시기 바랍니다(1,000자 이내).");
  	    objWin.document.write("</h3>");
@@ -268,7 +269,7 @@ function textCounter(field,withspace) {
             objWin.document.write("</p>");
             objWin.document.write("<br>");
             objWin.document.write("<br>");
-        
+
          objWin.document.write("<h3>");
             objWin.document.write(q4q.value);
  	    objWin.document.write("</h3>");
@@ -278,7 +279,7 @@ function textCounter(field,withspace) {
             objWin.document.write("</p>");
             objWin.document.write("<br>");
             objWin.document.write("<br>");
-        
+
 			objWin.document.close();
 
 			objWin.print();
@@ -295,7 +296,7 @@ function showLastUpdate(){
             query.first({
                 success: function(results) {
                     //Load Data
-                    document.getElementById("updatedAt").innerHTML = "마지막 수정시각 - "+results.updatedAt;  
+                    document.getElementById("updatedAt").innerHTML = "마지막 수정시각 - "+results.updatedAt;
                 },
                 error: function(error) {
                         }
